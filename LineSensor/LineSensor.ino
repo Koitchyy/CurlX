@@ -1,0 +1,1 @@
+#define USE_TIMER_1 true
