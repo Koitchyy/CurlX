@@ -33,9 +33,10 @@ footer {
 }
 
 /* --- SpaceX Timer Box --- */
-/* --- SpaceX Timer Box --- */
 .launch-timer {
-    border: 1px solid #fff; /* Changed to pure white border */
+    background-color: transparent; /* Makes it completely hollow */
+    border: 1px solid #fff;        /* Crisp white border */
+    border-radius: 4px;            /* Slight rounding to match the SpaceX look */
     padding: 10px 20px;
     display: flex;
     gap: 30px; 
@@ -45,27 +46,30 @@ footer {
 }
 
 .launch-timer .time {
-    font-variant-numeric: tabular-nums; /* Keeps the numbers from shifting as they tick */
+    font-variant-numeric: tabular-nums; 
 }
 
 /* --- SpaceX Explore Button --- */
 .explore-btn {
+    background-color: transparent; /* Makes it completely hollow */
+    border: 1px solid #fff;        /* Crisp white border */
+    border-radius: 4px;            /* Slight rounding to match the SpaceX look */
     display: inline-flex;
     align-items: center;
-    border: 1px solid #fff; /* Boxed in white */
     padding: 15px 35px;
-    color: #fff !important; /* Forces the text to be white, overriding the default blue link */
-    text-decoration: none;  /* Removes the hyperlink underline */
-    text-transform: uppercase; /* Forces ALL CAPS */
+    color: #fff !important; 
+    text-decoration: none;  
+    text-transform: uppercase; 
     font-size: 13px;
     font-weight: 700;
     margin-top: 30px;
-    transition: background 0.3s, color 0.3s; /* Smooth animation for the hover */
+    transition: opacity 0.3s;      /* Smooth fade effect for hover */
 }
 
+/* The hover effect: Now it stays hollow, but just dims slightly when hovered */
 .explore-btn:hover {
-    background: #fff;
-    color: #000 !important;
+    background-color: transparent; 
+    opacity: 0.7; 
 }
 
 .explore-btn span {
