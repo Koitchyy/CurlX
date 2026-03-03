@@ -4,7 +4,7 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: 'Barlow', sans-se
 /* navigation */
 nav { position: fixed; top: 0; width: 100%; display: flex; align-items: center; padding: 20px 50px; background: rgba(0,0,0,0.8); z-index: 1000; box-sizing: border-box; }
 nav .logo { display: inline-flex; align-items: center; }
-nav .logo img { height: 32px; width: auto; display: block; }
+nav .logo img { height: 24px; width: auto; display: block; }
 nav ul { 
     display: flex; 
     list-style: none; 
@@ -48,8 +48,7 @@ nav a:hover { color: #aaa; }
     width: 55vh;
     height: 55vh;
     background: url('./imgs/puck.png') no-repeat center center/contain;
-    border-radius: 50%;
-    box-shadow: 0 0 120px rgba(0, 200, 255, 0.5);
+    box-shadow: 0 0 140px rgba(255, 60, 60, 0.6);
     transform-origin: 50% 50%;
     animation: puck-spin 24s linear infinite;
     opacity: 0.95;
