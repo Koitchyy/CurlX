@@ -42,7 +42,7 @@ nav a:hover { color: #aaa; }
 .hero::after {
     content: "";
     position: absolute;
-    left: 72%;
+    left: 58%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 45vh;
