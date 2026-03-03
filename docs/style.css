@@ -31,3 +31,43 @@ footer {
     letter-spacing: 1.5px;
     text-align: right;      /* Pushes the text to the bottom right corner */
 }
+
+/* --- SpaceX Timer Box --- */
+.launch-timer {
+    border: 1px solid #444; /* Subtle gray border */
+    padding: 10px 20px;
+    display: flex;
+    gap: 30px; /* Space between "UPCOMING LAUNCHES" and the time */
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    margin-left: 20px; /* Pushes it slightly away from the nav links */
+}
+
+.launch-timer .time {
+    font-variant-numeric: tabular-nums; /* Keeps the numbers from shifting as they tick */
+}
+
+/* --- SpaceX Explore Button --- */
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 15px 35px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 30px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.explore-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.explore-btn span {
+    margin-left: 15px;
+    font-size: 16px; 
+}

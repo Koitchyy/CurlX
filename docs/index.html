@@ -19,15 +19,43 @@
             <li><a href="reflection.html">Reflection</a></li>
             <li><a href="strategy.html">Strategy</a></li>
         </ul>
+
+        <div class="launch-timer">
+            <span>ME210 COMPETITION</span>
+            <span class="time" id="countdown">T- 00:00:00</span>
+        </div>
     </nav>
 
     <section class="hero">
         <p>Current Project</p>
-        <h1>UAV Division: FPV Racing</h1>
+        <h1>CurlX</h1>
     </section>
 
     <footer>
         2026 ME210 CurlX
     </footer>
+
+    <script>
+        var checkoffDate = new Date("Mar 8, 2026 18:00:00").getTime();
+
+        var timer = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = checkoffDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result to the HTML element with id="countdown"
+            document.getElementById("countdown").innerHTML = "T- " + days + ":" + hours + ":" + minutes + ":" + seconds;
+
+            // What happens when it hits 0
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "COMPETITION ACTIVE";
+            }
+        }, 1000); // 1000 milliseconds = ticks every 1 second
+    </script>
 </body>
 </html>
