@@ -39,21 +39,6 @@ nav a:hover { color: #aaa; }
 .hero h1 { font-size: 60px; text-transform: uppercase; margin: 0; }
 .hero p { font-size: 18px; max-width: 600px; margin-top: 10px; }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    left: 75%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 56vh;
-    height: 56vh;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,60,60,0.5) 0%, rgba(255,60,60,0.0) 65%);
-    box-shadow:
-        0 0 0 0 rgba(255, 60, 60, 0),
-        0 0 180px rgba(255, 60, 60, 0.55);
-}
-
 .hero::after {
     content: "";
     position: absolute;
@@ -63,9 +48,10 @@ nav a:hover { color: #aaa; }
     width: 45vh;
     height: 45vh;
     background: url('./imgs/puck.png') no-repeat center center/contain;
-    border-radius: 50%;
-    /* no box-shadow here so the puck itself stays crisp;
-       the circular glow is provided by .hero::before */
+    /* red glow hugs the puck image, which is already clipped */
+    box-shadow:
+        0 0 0 10px rgba(255, 60, 60, 0.75),
+        0 0 90px rgba(255, 60, 60, 0.6);
     transform-origin: 50% 50%;
     animation: puck-spin 24s linear infinite;
     opacity: 0.95;
