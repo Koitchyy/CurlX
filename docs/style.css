@@ -7,7 +7,7 @@ nav .logo { font-weight: 700; font-size: 24px; text-transform: uppercase; letter
 nav ul { 
     display: flex; 
     list-style: none; 
-    margin-left: 40px; /* Gives a little breathing room from the CurlX logo */
+    margin-left: 40px; 
     gap: 30px; 
     padding: 0; 
 }
@@ -16,7 +16,7 @@ nav a {
     text-decoration: none; 
     text-transform: uppercase; 
     font-size: 13px; 
-    font-weight: 300; /* Changed from 400 to 300 for that sleek, thin look! */
+    font-weight: 300; 
     letter-spacing: 1px; 
     transition: color 0.3s; 
 }
@@ -58,7 +58,7 @@ footer {
     gap: 30px; 
     font-size: 13px;
     letter-spacing: 1.5px;
-    margin-left: auto; /* THIS is the magic line that shoves the timer to the far right edge */
+    margin-left: auto; 
     color: #fff;       
 }
 
@@ -78,9 +78,9 @@ footer {
     text-decoration: none;  
     text-transform: uppercase; 
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 300; 
     margin-top: 30px;
-    transition: opacity 0.3s;      /* Smooth fade effect for hover */
+    transition: opacity 0.3s;    
 }
 
 .explore-btn:hover {
