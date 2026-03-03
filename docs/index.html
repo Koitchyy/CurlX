@@ -46,12 +46,35 @@
         (function () {
             var checkoffDate = new Date("Mar 8, 2026 18:00:00").getTime();
             var countdownEl = document.getElementById("countdown");
-            var lastSeconds = null;
 
             function pad(num, size) {
                 var s = String(num);
                 while (s.length < size) s = "0" + s;
                 return s;
+            }
+
+            function renderWithDigitAnimation(formatted) {
+                var prev = countdownEl.getAttribute("data-prev") || formatted;
+                var html = "";
+
+                for (var i = 0; i < formatted.length; i++) {
+                    var ch = formatted.charAt(i);
+                    var isDigit = ch >= "0" && ch <= "9";
+
+                    if (isDigit) {
+                        if (prev.charAt(i) !== ch) {
+                            html += '<span class="digit digit-tick">' + ch + "</span>";
+                        } else {
+                            html += '<span class="digit">' + ch + "</span>";
+                        }
+                    } else {
+                        html += ch;
+                    }
+                }
+
+                countdownEl.innerHTML = html;
+                countdownEl.setAttribute("data-prev", formatted);
+                countdownEl.classList.add("time-visible");
             }
 
             function updateCountdown() {
@@ -67,24 +90,14 @@
                 var seconds = totalSeconds % 60;
 
                 var prefix = beforeLaunch ? "T- " : "T+ ";
-                countdownEl.textContent =
+                var formatted =
                     prefix +
                     pad(days, 2) + ":" +
                     pad(hours, 2) + ":" +
                     pad(minutes, 2) + ":" +
                     pad(seconds, 2);
 
-                // Reveal after first calculation to avoid initial 0:00:00 flash
-                countdownEl.classList.add("time-visible");
-
-                // Trigger slide animation when the seconds change
-                if (lastSeconds !== null && lastSeconds !== seconds) {
-                    countdownEl.classList.remove("time-tick");
-                    // force reflow to restart animation
-                    void countdownEl.offsetWidth;
-                    countdownEl.classList.add("time-tick");
-                }
-                lastSeconds = seconds;
+                renderWithDigitAnimation(formatted);
             }
 
             // Initial render without waiting 1 second
