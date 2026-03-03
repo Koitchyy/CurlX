@@ -47,7 +47,7 @@ nav a:hover { color: #aaa; }
     transform: translateY(-50%);
     width: 380px;
     height: 380px;
-    background: url('imgs/puck.png') no-repeat center center/contain;
+    background: url('./imgs/puck.png') no-repeat center center/contain;
     border-radius: 50%;
     box-shadow: 0 0 80px rgba(0, 200, 255, 0.45);
     animation: puck-orbit 40s linear infinite;
