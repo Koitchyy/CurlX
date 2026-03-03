@@ -33,14 +33,15 @@ footer {
 }
 
 /* --- SpaceX Timer Box --- */
+/* --- SpaceX Timer Box --- */
 .launch-timer {
-    border: 1px solid #444; /* Subtle gray border */
+    border: 1px solid #fff; /* Changed to pure white border */
     padding: 10px 20px;
     display: flex;
-    gap: 30px; /* Space between "UPCOMING LAUNCHES" and the time */
+    gap: 30px; 
     font-size: 13px;
     letter-spacing: 1.5px;
-    margin-left: 20px; /* Pushes it slightly away from the nav links */
+    margin-left: 20px; 
 }
 
 .launch-timer .time {
@@ -51,20 +52,20 @@ footer {
 .explore-btn {
     display: inline-flex;
     align-items: center;
-    border: 1px solid #fff;
+    border: 1px solid #fff; /* Boxed in white */
     padding: 15px 35px;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
+    color: #fff !important; /* Forces the text to be white, overriding the default blue link */
+    text-decoration: none;  /* Removes the hyperlink underline */
+    text-transform: uppercase; /* Forces ALL CAPS */
     font-size: 13px;
     font-weight: 700;
     margin-top: 30px;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s; /* Smooth animation for the hover */
 }
 
 .explore-btn:hover {
     background: #fff;
-    color: #000;
+    color: #000 !important;
 }
 
 .explore-btn span {
