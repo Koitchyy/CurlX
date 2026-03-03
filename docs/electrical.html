@@ -9,7 +9,9 @@
 </head>
 <body>
     <nav>
-        <div class="logo">CurlX</div>
+        <a href="index.html" class="logo">
+            <img src="imgs/logo.png" alt="CurlX logo">
+        </a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
@@ -27,16 +29,54 @@
     </nav>
 
     <section class="section">
+        <h1>Electrical</h1>
+        <p class="section-intro">
+            Use this page to document your electrical system end-to-end: requirements, architecture, schematics, board/layout (if any),
+            wiring, power budget, and validation. Each block below is designed for “text + image” so you can drop in screenshots of schematics
+            and wiring diagrams.
+        </p>
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>System Overview</h3>
+                <p>
+                    Write a high-level description of your electrical architecture: power source, regulators, motor drivers, sensors,
+                    microcontroller(s), and any key design constraints.
+                </p>
+            </div>
+            <div class="img-placeholder">Overview diagram / block diagram</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>Schematics</h3>
+                <p>
+                    Add annotated schematics screenshots. Call out important subcircuits (power, motor control, sensing, comms)
+                    and any design decisions (component choices, protections, fusing, etc.).
+                </p>
+            </div>
+            <div class="img-placeholder">Schematic image</div>
         </div>
-    
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>Wiring & Integration</h3>
+                <p>
+                    Document wiring harness routing, connector choices, strain relief, and integration with the mechanical assembly.
+                    Include photos with labels if possible.
+                </p>
+            </div>
+            <div class="img-placeholder">Wiring photo / layout</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>Testing & Results</h3>
+                <p>
+                    Summarize what you tested (continuity, current draw, brownouts, EMI/noise issues) and the final performance.
+                </p>
+            </div>
+            <div class="img-placeholder">Scope screenshots / results plot</div>
         </div>
     </section>
 

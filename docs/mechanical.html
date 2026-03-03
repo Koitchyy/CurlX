@@ -9,7 +9,9 @@
 </head>
 <body>
     <nav>
-        <div class="logo">CurlX</div>
+        <a href="index.html" class="logo">
+            <img src="imgs/logo.png" alt="CurlX logo">
+        </a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
@@ -27,16 +29,52 @@
     </nav>
 
     <section class="section">
+        <h1>Mechanical</h1>
+        <p class="section-intro">
+            Use this page to document your mechanical design process: requirements, concepts, CAD evolution, key mechanisms,
+            manufacturing, and assembly. Each block is “text + image” so you can paste CAD renders, drawings, and build photos.
+        </p>
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>Requirements & Constraints</h3>
+                <p>
+                    List the key constraints (size/weight, field interaction, manufacturing limits, tolerances, assembly time) and what
+                    your mechanism needed to achieve.
+                </p>
+            </div>
+            <div class="img-placeholder">Constraints / requirement snapshot</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>Concepts & Trade Studies</h3>
+                <p>
+                    Show your top concepts and explain why you chose the final one (pros/cons, scoring, iteration history).
+                </p>
+            </div>
+            <div class="img-placeholder">Concept sketches / decision matrix</div>
         </div>
-    
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>CAD & Mechanism Details</h3>
+                <p>
+                    Describe the final architecture and the critical design features. Call out interfaces to electrical (mounts, cable paths)
+                    and software (sensor placement, adjustability).
+                </p>
+            </div>
+            <div class="img-placeholder">CAD render</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>Build, Assembly, & Testing</h3>
+                <p>
+                    Add photos of the build process, issues encountered, fixes, and measured performance.
+                </p>
+            </div>
+            <div class="img-placeholder">Build photos / test setup</div>
         </div>
     </section>
 

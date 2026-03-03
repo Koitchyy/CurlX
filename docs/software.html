@@ -9,7 +9,9 @@
 </head>
 <body>
     <nav>
-        <div class="logo">CurlX</div>
+        <a href="index.html" class="logo">
+            <img src="imgs/logo.png" alt="CurlX logo">
+        </a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
@@ -29,16 +31,51 @@
     </nav>
 
     <section class="section">
+        <h1>Software</h1>
+        <p class="section-intro">
+            Use this page for your software design process: architecture, control logic, state machines, sensor processing,
+            tuning, and results. Each block is designed for “text + image” so you can embed plots, code screenshots, and diagrams.
+        </p>
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>Architecture</h3>
+                <p>
+                    Describe your overall code structure (modules/files), how you separate concerns (sensing/control/actuation),
+                    and how the robot flow runs at runtime.
+                </p>
+            </div>
+            <div class="img-placeholder">System diagram / module map</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>State Machine / Control Flow</h3>
+                <p>
+                    Add your state machine diagram and explain transitions, timers, and any safety fallbacks.
+                </p>
+            </div>
+            <div class="img-placeholder">State machine diagram</div>
         </div>
-    
+
         <div class="content-grid">
-        <div>
-            <p> meow </p>
+            <div>
+                <h3>Sensing & Filtering</h3>
+                <p>
+                    Document sensor usage, calibration, thresholds, filtering, and how you validate readings.
+                </p>
+            </div>
+            <div class="img-placeholder">Sensor plots / calibration notes</div>
         </div>
+
+        <div class="content-grid reverse">
+            <div>
+                <h3>Tuning & Results</h3>
+                <p>
+                    Record tuning parameters (PID gains, thresholds) and the final performance with evidence (plots/videos/metrics).
+                </p>
+            </div>
+            <div class="img-placeholder">Tuning plot / performance metrics</div>
         </div>
     </section>
 
