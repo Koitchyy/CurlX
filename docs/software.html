@@ -22,7 +22,9 @@
 
         <div class="launch-timer">
             <span>ME210 COMPETITION</span>
-            <span class="time" id="countdown">T- 00:00:00</span>
+            <span class="time-wrapper">
+                <span class="time" id="countdown"></span>
+            </span>
         </div>
     </nav>
 
@@ -45,26 +47,54 @@
     </footer>
 
     <script>
-        var checkoffDate = new Date("Mar 8, 2026 18:00:00").getTime();
+        (function () {
+            var checkoffDate = new Date("Mar 8, 2026 18:00:00").getTime();
+            var countdownEl = document.getElementById("countdown");
+            var lastSeconds = null;
 
-        var timer = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = checkoffDate - now;
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Output the result to the HTML element with id="countdown"
-            document.getElementById("countdown").innerHTML = "T- " + days + ":" + hours + ":" + minutes + ":" + seconds;
-
-            // What happens when it hits 0
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "COMPETITION ACTIVE";
+            function pad(num, size) {
+                var s = String(num);
+                while (s.length < size) s = "0" + s;
+                return s;
             }
-        }, 1000); // 1000 milliseconds = ticks every 1 second
+
+            function updateCountdown() {
+                var now = new Date().getTime();
+                var diff = checkoffDate - now; // positive before launch, negative after
+                var beforeLaunch = diff >= 0;
+                var distance = Math.abs(diff);
+
+                var totalSeconds = Math.floor(distance / 1000);
+                var days = Math.floor(totalSeconds / (60 * 60 * 24));
+                var hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+                var minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+                var seconds = totalSeconds % 60;
+
+                var prefix = beforeLaunch ? "T- " : "T+ ";
+                countdownEl.textContent =
+                    prefix +
+                    pad(days, 2) + ":" +
+                    pad(hours, 2) + ":" +
+                    pad(minutes, 2) + ":" +
+                    pad(seconds, 2);
+
+                // Reveal after first calculation to avoid initial 0:00:00 flash
+                countdownEl.classList.add("time-visible");
+
+                // Trigger slide animation when the seconds change
+                if (lastSeconds !== null && lastSeconds !== seconds) {
+                    countdownEl.classList.remove("time-tick");
+                    // force reflow to restart animation
+                    void countdownEl.offsetWidth;
+                    countdownEl.classList.add("time-tick");
+                }
+                lastSeconds = seconds;
+            }
+
+            // Initial render without waiting 1 second
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
     </script>
 </body>
 </html>

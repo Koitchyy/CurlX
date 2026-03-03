@@ -62,8 +62,33 @@ footer {
     color: #fff;       
 }
 
+.launch-timer .time-wrapper {
+    overflow: hidden;
+    display: inline-block;
+}
+
 .launch-timer .time {
-    font-variant-numeric: tabular-nums; 
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.launch-timer .time.time-visible {
+    opacity: 1;
+}
+
+.launch-timer .time.time-tick {
+    animation: time-slide-down 0.3s ease-out;
+}
+
+@keyframes time-slide-down {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 /* --- SpaceX Explore Button --- */
 .explore-btn {
