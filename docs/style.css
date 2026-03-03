@@ -36,13 +36,13 @@ nav a:hover { color: #aaa; }
     padding: 0 0 100px 50px; 
     box-sizing: border-box; 
 }
-.hero h1 { font-size: 60px; text-transform: uppercase; margin: 0; }
-.hero p { font-size: 18px; max-width: 600px; margin-top: 10px; }
+.hero h1 { font-size: 60px; text-transform: uppercase; margin: 0; font-weight: 300; }
+.hero p { font-size: 18px; max-width: 600px; margin-top: 10px; font-weight: 300; }
 
 .hero::after {
     content: "";
     position: absolute;
-    left: 75%;
+    left: 60%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 45vh;
