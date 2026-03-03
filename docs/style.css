@@ -1,59 +1,76 @@
 /* docs/style.css */
 body, html { margin: 0; padding: 0; height: 100%; font-family: 'Barlow', sans-serif; background: #000; color: #fff; }
 
-/* Navigation */
+/* navigation */
 nav { position: fixed; top: 0; width: 100%; display: flex; align-items: center; padding: 20px 50px; background: rgba(0,0,0,0.8); z-index: 1000; box-sizing: border-box; }
 nav .logo { font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
-nav ul { display: flex; list-style: none; margin-left: auto; gap: 30px; margin-right: 50px; padding: 0; }
-nav a { color: #fff; text-decoration: none; text-transform: uppercase; font-size: 14px; font-weight: 700; transition: color 0.3s; }
+nav ul { 
+    display: flex; 
+    list-style: none; 
+    margin-left: 40px; /* Gives a little breathing room from the CurlX logo */
+    gap: 30px; 
+    padding: 0; 
+}
+nav a { 
+    color: #fff; 
+    text-decoration: none; 
+    text-transform: uppercase; 
+    font-size: 13px; 
+    font-weight: 300; /* Changed from 400 to 300 for that sleek, thin look! */
+    letter-spacing: 1px; 
+    transition: color 0.3s; 
+}
 nav a:hover { color: #aaa; }
+
+
 
 .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/drone-bg.jpg') no-repeat center center/cover; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 100px 50px; box-sizing: border-box; }
 .hero h1 { font-size: 60px; text-transform: uppercase; margin: 0; }
 .hero p { font-size: 18px; max-width: 600px; margin-top: 10px; }
 
-/* Standard Page Sections (For Team, Software, Electrical, etc.) */
+/* standard page sections */
 .section { padding: 120px 10% 50px; min-height: 80vh; }
 .section h1 { font-size: 40px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
 
-/* The Grid for Paragraphs + Images */
+/* grid for paragraphs and images */
 .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
 .content-grid img { width: 100%; border: 1px solid #333; border-radius: 4px; }
 .content-grid h3 { font-size: 24px; text-transform: uppercase; margin-bottom: 10px; color: #fff; }
 .content-grid p { font-size: 16px; line-height: 1.6; color: #ccc; }
 
 footer {
-    background-color: #000; /* Blends perfectly into the dark background */
-    color: #555;            /* Very dark gray so it doesn't distract */
-    padding: 30px 50px;     /* Gives it breathing room from the edges */
-    font-size: 11px;        /* Very small font size */
+    background-color: #000; 
+    color: #555;            
+    padding: 30px 50px;     
+    font-size: 11px;        
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    text-align: right;      /* Pushes the text to the bottom right corner */
+    text-align: right;   
 }
 
 /* --- SpaceX Timer Box --- */
 .launch-timer {
-    background-color: transparent; /* Makes it completely hollow */
-    border: 1px solid #fff;        /* Crisp white border */
-    border-radius: 4px;            /* Slight rounding to match the SpaceX look */
+    background-color: transparent; 
+    border: 1px solid #555; 
+    border-radius: 4px; 
     padding: 10px 20px;
     display: flex;
     gap: 30px; 
     font-size: 13px;
     letter-spacing: 1.5px;
-    margin-left: 20px; 
+    margin-left: auto; /* THIS is the magic line that shoves the timer to the far right edge */
+    color: #fff;       
 }
 
 .launch-timer .time {
     font-variant-numeric: tabular-nums; 
 }
-
 /* --- SpaceX Explore Button --- */
 .explore-btn {
-    background-color: transparent; /* Makes it completely hollow */
-    border: 1px solid #fff;        /* Crisp white border */
-    border-radius: 4px;            /* Slight rounding to match the SpaceX look */
+    background-color: transparent; 
+    border: 1px solid #fff;        
+    align-self: flex-start;
+    border-radius: 4px;           
     display: inline-flex;
     align-items: center;
     padding: 15px 35px;
@@ -66,7 +83,6 @@ footer {
     transition: opacity 0.3s;      /* Smooth fade effect for hover */
 }
 
-/* The hover effect: Now it stays hollow, but just dims slightly when hovered */
 .explore-btn:hover {
     background-color: transparent; 
     opacity: 0.7; 
