@@ -9,10 +9,10 @@
 
 // Pin definitions (IN1, IN2, ENA for each wheel: FL, FR, BL, BR)
 MecanumWheels robot(
-    7, 6, 5,    // Front Left:  IN1, IN2, ENA
-    12, 13, 11, // Front Right: IN1, IN2, ENA
-    4, 2, 3,    // Back Left:   IN1, IN2, ENA
-    10, 8, 9    // Back Right:  IN1, IN2, ENA
+    26, 27, 3,    // Front Left:  IN1, IN2, ENA
+    22, 23, 11, // Front Right: IN1, IN2, ENA
+    28, 29, 2,    // Back Left:   IN1, IN2, ENA
+    24, 25, 10    // Back Right:  IN1, IN2, ENA
 );
 
 const int sensorPin = A0;        //  analog input from the Schmitt trigger
