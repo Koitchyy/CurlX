@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CurlX | ME210</title>
+    <title>Electrical Design</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    
     <nav>
         <div class="logo">CurlX</div>
         <ul>
@@ -27,11 +26,18 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>MAKING ME210<br>MULTIPLANETARY</h1>
-        <p>CurlX was founded under the belief that a future where our robot dominates the arena is fundamentally more exciting than one where we do not.</p>
-        
-        <a href="strategy.html" class="explore-btn">EXPLORE <span>&rarr;</span></a>
+    <section class="section">
+        <div class="content-grid">
+        <div>
+            <p> meow </p>
+        </div>
+        </div>
+    
+        <div class="content-grid">
+        <div>
+            <p> meow </p>
+        </div>
+        </div>
     </section>
 
     <footer>
@@ -40,6 +46,7 @@
 
     <script>
         var checkoffDate = new Date("Mar 8, 2026 18:00:00").getTime();
+
         var timer = setInterval(function() {
             var now = new Date().getTime();
             var distance = checkoffDate - now;
@@ -49,13 +56,16 @@
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+            // Output the result to the HTML element with id="countdown"
             document.getElementById("countdown").innerHTML = "T- " + days + ":" + hours + ":" + minutes + ":" + seconds;
 
+            // What happens when it hits 0
             if (distance < 0) {
                 clearInterval(timer);
                 document.getElementById("countdown").innerHTML = "COMPETITION ACTIVE";
             }
-        }, 1000);
+        }, 1000); // 1000 milliseconds = ticks every 1 second
     </script>
 </body>
 </html>
+
