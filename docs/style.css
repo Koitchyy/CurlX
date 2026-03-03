@@ -48,10 +48,6 @@ nav a:hover { color: #aaa; }
     width: 45vh;
     height: 45vh;
     background: url('./imgs/puck.png') no-repeat center center/contain;
-    /* red glow hugs the puck image, which is already clipped */
-    box-shadow:
-        0 0 0 10px rgba(255, 60, 60, 0.75),
-        0 0 90px rgba(255, 60, 60, 0.6);
     transform-origin: 50% 50%;
     animation: puck-spin 24s linear infinite;
     opacity: 0.95;
@@ -110,7 +106,6 @@ footer {
     text-align: right;   
 }
 
-/* --- SpaceX Timer Box --- */
 .launch-timer {
     background-color: transparent; 
     border: 1px solid #555; 
@@ -156,7 +151,7 @@ footer {
         transform: translateY(0);
     }
 }
-/* --- SpaceX Explore Button --- */
+
 .explore-btn {
     background-color: transparent; 
     border: 1px solid #fff;        
