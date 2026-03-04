@@ -13,17 +13,17 @@ const int sensorPin = A0;
 const int flywheelPin = 4;
 const int dirPin = 6;
 const int stepPin = 7;
-const float thresholdAmplitude = 1.15; 
+const float thresholdAmplitude = 4.2/2; 
 
 // Timing Configuration
-const unsigned long shiftDuration = 2000; 
-const unsigned long reverseDuration = 3000;
+const unsigned long shiftDuration = 1000; 
+const unsigned long reverseDuration = 2000;
 const int shootSpeed = 130;
 
 // Stepper Configuration
 const int stepsTo90 = 888;          
 const unsigned long stepDelayMicros = 1000; 
-const unsigned long stepInterval = 10000; // 5 second pause between shots
+const unsigned long stepInterval = 8000; // 5 second pause between shots
 const unsigned long finalWait = 1500; 
 
 // --- State Management ---
@@ -52,10 +52,14 @@ void setup() {
     
     // Motor speed offsets: FL, FR, BL, BR
     robot.begin(115, 100, 100, 100);
-    robot.stop(); 
+    //robot.turnRight();
+    //robot.stop(); 
+
 
     // Timer initialization for testing SHOOTING state
-    shootPhaseStartTime = millis(); 
+
+    shootPhaseStartTime = millis();
+
     analogWrite(flywheelPin, shootSpeed);
     Serial.println("Code Loaded. FL(27,26,3) FR(22,23,11) BL(29,28,2) BR(24,25,10)");
 }
