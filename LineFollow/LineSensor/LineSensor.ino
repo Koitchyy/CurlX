@@ -1,6 +1,6 @@
 // --- Pin Definitions ---
-const int ledPin = 9;    // Outputs the 1.25 kHz signal to the LED
-const int sensorPin = 2; // Reads the output from the Schmitt Trigger
+const int ledPin = 49;    // Outputs the 1.25 kHz signal to the LED
+const int sensorPin = 18; // Reads the output from the Schmitt Trigger
 
 // --- Variables for Counting ---
 volatile unsigned int pulseCount = 0;
