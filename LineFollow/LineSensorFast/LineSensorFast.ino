@@ -7,7 +7,7 @@ volatile unsigned int pulseCount = 0;
 unsigned int savedCount = 0;
 unsigned long lastTime = 0;
 
-const int sampleWindow = 100; // ms
+const int sampleWindow = 20; // ms
 
 void setup() {
   Serial.begin(9600);
@@ -16,7 +16,7 @@ void setup() {
   pinMode(sensorPin, INPUT);
 
   // Continuous 1.25 kHz square wave on ledPin
-  tone(ledPin, 1250);
+  tone(ledPin, 6250);
 
   // Attach an interrupt to Pin 2.
   // counts falling edges
