@@ -188,6 +188,18 @@ footer {
     border: 1px solid #333;
 }
 
+.photo-caption {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 20px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.02); /* Matches your team-member boxes */
+    border-top: 1px solid #333; /* Separates the text from the image */
+    text-align: right; /* Aligns it to the right for a cleaner look */
+}
+
 .team-photo {
     width: 100%;
     display: block;
