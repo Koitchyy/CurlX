@@ -187,6 +187,7 @@ footer {
     border-radius: 6px;
     border: 1px solid #333;
 }
+
 .team-photo {
     width: 100%;
     display: block;
@@ -196,33 +197,39 @@ footer {
 
 .team-members {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    /* create 4 equal columns across the full width */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    width: 100%;
 }
+
 .team-member {
-    padding: 20px;
+    padding: 25px 15px; 
     border: 1px solid #333;
     border-radius: 4px;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center; /* Centers the name and role */
+    transition: border-color 0.3s ease;
 }
+
+.team-member:hover {
+    border-color: #555; /* Subtle highlight on hover */
+}
+
 .team-member h3 {
     font-size: 18px;
     text-transform: uppercase;
-    margin: 0 0 5px;
+    margin: 0 0 8px; 
     color: #fff;
+    letter-spacing: 1px;
 }
+
 .team-member .team-role {
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px; 
     color: #888;
-    margin: 0 0 12px;
-}
-.team-member p:last-child {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #bbb;
-    margin: 0;
+    margin: 0; 
 }
 
 @media (max-width: 900px) {
