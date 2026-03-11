@@ -458,3 +458,71 @@ footer {
 .page-requirements li {
     margin-bottom: 10px;
 }
+
+/*bom*/
+.bom-section {
+    padding: 80px 10%;
+    background: #000;
+    border-top: 1px solid #333;
+}
+
+.bom-container h2 {
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.bom-subtitle {
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.table-wrapper {
+    overflow-x: auto; /* Ensures it doesn't break on mobile */
+}
+
+.bom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.bom-table th {
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    color: #fff;
+    border-bottom: 1px solid #555;
+    padding: 15px 10px;
+}
+
+.bom-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #222;
+}
+
+.text-right { text-align: right; }
+
+.total-row td {
+    border-top: 2px solid #fff;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding-top: 20px;
+}
+
+.hardware-row td {
+    font-style: italic;
+    color: #666;
+}
+
+/* Hover effect to make it feel interactive */
+.bom-table tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+}
