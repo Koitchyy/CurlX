@@ -35,18 +35,64 @@
         <p class="section-intro">
             1. use the IR beacon to align robot 
             <br>
-            2. move the robot to the center line and rotate to face the bullseye 
+            2. move the robot to the center line and out of the box, then rotate to face the bullseye 
             <br>
             3. shoot pucks directly into the bullseye 
             <br>
             4. move backwards into the box to reload and repeat 
         </p>
 
+        <div class="game-rules">
+            <h2>Game Rules</h2>
+            <p class="rules-intro">At the start of a BOTspiel match (as declared audibly):</p>
+            <ul class="rules-list">
+                <li>Each DROID will begin in a starting zone (A or B) in a randomized orientation decided by the teaching staff.</li>
+                <li>Each DROID begins with up to three pucks and can only hold up to three pucks at any given time.</li>
+                <li>No further human interaction is allowed after the DROID has started moving, except to reload more pucks.</li>
+                <li>In order to reload more pucks, a DROID must have completely left the starting zone and returned completely into the starting zone.</li>
+                <li>During reloading, direct human interaction with the DROID is allowed, but only for the purpose of reloading. Any other adjustments will result in a penalty (1 point).</li>
+                <li>Each DROID must automatically cease gameplay at the end of the match (two minutes).</li>
+                <li>Intentional jamming of your opponent's sensing abilities is prohibited.</li>
+                <li>Intentional destruction, damage, or alteration of any part of the field or other DROIDs is expressly forbidden.</li>
+                <li>The most a puck can be above the CURLING SHEET is 1 inch, after leaving the DROID.</li>
+                <li>Members of your team are not allowed to position themselves in a way that will interfere with the activities of any opponent's DROID. Polite, "G-rated" heckling is permitted.</li>
+                <li>The tournament bracket order will be determined by the order in which teams perform the graded check-off (see performance requirements).</li>
+                <li>Sideline coaching is strictly prohibited; no information, besides those inherent from the game, may be passed to your DROID during the match.</li>
+            </ul>
+
+            <h3>Scoring</h3>
+            <table class="scoring-table">
+                <thead>
+                    <tr><th>Puck Location</th><th>Points</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Center / Button</td><td>5</td></tr>
+                    <tr><td>Middle ring</td><td>2</td></tr>
+                    <tr><td>Outer ring</td><td>1</td></tr>
+                    <tr><td>Past opponent's hog line</td><td>-3</td></tr>
+                </tbody>
+            </table>
+            <ul class="rules-list rules-list-compact">
+                <li>Scores are computed as the sum of all puck values.</li>
+                <li>Puck locations are determined by the center point location of the puck.</li>
+                <li>In the event of a scoring tie, the staff will preside over the final ruling of the round.</li>
+                <li>If two pucks are on top of each other, only the puck closer to the button gets scored.</li>
+                <li>If a team's puck knocks the other team's puck out of a given scoring zone, it will gain the points associated with the given scoring zone. <em>Example:</em> DROID A's puck knocks DROID B's puck out from the 3 point zone into the 5 point zone, and DROID A's puck ends up in the 3 point zone. For the given two pucks, DROID A gains 6 points and DROID B has 5 points.</li>
+            </ul>
+
+            <h3>Penalties</h3>
+            <ul class="rules-list rules-list-compact">
+                <li>During the BOTspiel, if the DROID behaves in an unexpected manner, human interaction is permitted for a total manual reset (back to the starting zone) for a <strong>3 point penalty</strong>.</li>
+                <li>If human interaction extends beyond reloading pucks when the DROID is in the starting zone, there is a <strong>1 point penalty</strong>. Your DROID may need a last minute bandage worth this penalty.</li>
+                <li>If the front of a DROID clearly passes its own team hog line (past the black tape by a centimeter or so), there is a <strong>1 point penalty</strong> and all shots taken past the hog line do not count. To avoid this penalty and reach over the hog line, a DROID must have a mechanical mechanism that expands the DROID beyond its original starting zone dimensions, deployed <em>outside</em> of the starting zone. Only portions that expand from the DROID's original starting zone dimensions may pass the hog line.</li>
+            </ul>
+        </div>
+
         <div class="content-grid">
             <div>
                 <h3>Game Analysis</h3>
                 <p>
-                    Summarize the rules that matter most, key constraints, and what “winning” looks like in terms of scoring.
+                    
                 </p>
             </div>
             <div class="img-placeholder">Field diagram / scoring breakdown</div>

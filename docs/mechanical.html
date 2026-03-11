@@ -32,18 +32,28 @@
 
     <section class="section">
         <h1>Mechanical</h1>
-        <p class="section-intro">
-            Use this page to document your mechanical design process: requirements, concepts, CAD evolution, key mechanisms,
-            manufacturing, and assembly. Each block is “text + image” so you can paste CAD renders, drawings, and build photos.
-        </p>
 
         <div class="content-grid">
             <div>
                 <h3>Requirements & Constraints</h3>
-                <p>
-                    List the key constraints (size/weight, field interaction, manufacturing limits, tolerances, assembly time) and what
-                    your mechanism needed to achieve.
-                </p>
+                <div class="mech-constraints">
+                    <h4>Puck Specifications</h4>
+                    <ul>
+                        <li>Material: hardened steel chrome with ABS plastic top cover</li>
+                        <li>Diameter: 2.08 inches</li>
+                        <li>Thickness: 1 inch</li>
+                        <li>Can be slid on either the steel chrome face or colored plastic face</li>
+                        <li>Weight: 8 oz.</li>
+                    </ul>
+                    <h4>DROID Constraints</h4>
+                    <ul>
+                        <li>Maximum footprint in starting zone: 13 in × 13 in</li>
+                        <li>Maximum footprint out of starting zone: 20 in × 20 in</li>
+                        <li>Maximum height: 12 in</li>
+                        <li>Must contain all pucks internally (fits in the DROID footprint)</li>
+                        <li>Front of DROID, as defined by DROID dimensions in the starting zone, cannot cross the hog line by over a centimeter.</li>
+                    </ul>
+                </div>
             </div>
             <div class="img-placeholder">Constraints / requirement snapshot</div>
         </div>
