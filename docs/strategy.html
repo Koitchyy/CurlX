@@ -15,11 +15,11 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
+            <li><a href="strategy.html">Strategy</a></li>
             <li><a href="electrical.html">Electrical</a></li>
             <li><a href="software.html">Software</a></li>
             <li><a href="mechanical.html">Mechanical</a></li>
             <li><a href="reflection.html">Reflection</a></li>
-            <li><a href="strategy.html">Strategy</a></li>
         </ul>
 
         <div class="launch-timer">
@@ -30,18 +30,9 @@
         </div>
     </nav>
 
-    <section class="section">
-        <h1>Strategy</h1>
-        <p class="section-intro">
-            1. use the IR beacon to align robot 
-            <br>
-            2. move the robot to the center line and out of the box, then rotate to face the bullseye 
-            <br>
-            3. shoot pucks directly into the bullseye 
-            <br>
-            4. move backwards into the box to reload and repeat 
-        </p>
+    <h1>Strategy</h1>
 
+    <section class="section">
         <div class="game-rules">
             <h2>Game Rules</h2>
             <p class="rules-intro">At the start of a BOTspiel match (as declared audibly):</p>
@@ -89,18 +80,23 @@
         </div>
 
         <div class="content-grid">
-            <div>
-                <h3>Game Analysis</h3>
-                <p>
-                    
-                </p>
-            </div>
             <div class="img-placeholder">Field diagram / scoring breakdown</div>
+            <img src="./imgs/field.png">
         </div>
+        
+        <p class="section-intro">
+            1. use the IR beacon to align robot by detecting a signal greater than a threshold 
+            <br>
+            2. move the robot to the center line and out of the box, then rotate to face the bullseye 
+            <br>
+            3. shoot pucks directly into the bullseye with flywheel and stepper motor 
+            <br>
+            4. move backwards into the starting box to reload for 5 seconds 
+        </p>
 
         <div class="content-grid reverse">
             <div>
-                <h3>Approach & Priorities</h3>
+                <h3>Product Nucleus</h3>
                 <p>
                     Explain your prioritized objectives and why (points per second, reliability, complexity).
                 </p>
@@ -108,16 +104,6 @@
             <div class="img-placeholder">Strategy flow / decision tree</div>
         </div>
 
-        <div class="content-grid">
-            <div>
-                <h3>Iteration & Match Learnings</h3>
-                <p>
-                    Track what changed after tests and matches: what worked, what failed, and what you improved.
-                </p>
-            </div>
-            <div class="img-placeholder">Photos / notes from iterations</div>
-        </div>
-    </section>
 
     <footer>
         2026 ME210 CurlX

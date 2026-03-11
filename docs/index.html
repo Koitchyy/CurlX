@@ -16,11 +16,11 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
+            <li><a href="strategy.html">Strategy</a></li>
             <li><a href="electrical.html">Electrical</a></li>
             <li><a href="software.html">Software</a></li>
             <li><a href="mechanical.html">Mechanical</a></li>
             <li><a href="reflection.html">Reflection</a></li>
-            <li><a href="strategy.html">Strategy</a></li>
         </ul>
 
         <div class="launch-timer">
@@ -37,6 +37,55 @@
         
         <a href="strategy.html" class="explore-btn">EXPLORE <span>&rarr;</span></a>
     </section>
+
+
+    <section class="mission-specs">
+        <div class="mission-grid">
+            <div class="mission-nav">
+                <ul>
+                    <li class="active">01. MISSION OBJECTIVE</li>
+                    <li>02. DROID SPECIFICATIONS</li>
+                    <li>03. ARENA DYNAMICS</li>
+                </ul>
+            </div>
+    
+            <div class="mission-text">
+                <h2>The Mission</h2>
+                <p class="intro-p">
+                    Curling—historically known as the "Pride of the Winter Olympics"—undergoes a radical evolution for ME210. 
+                    Replacing human athletes with autonomous <strong>DROIDs</strong> (Dynamic Rolling Olympians in Disguise), 
+                    the competition demands high-precision navigation and strategic puck placement.
+                </p>
+    
+                <div class="specs-row">
+                    <div class="spec-box">
+                        <h3>Autonomy</h3>
+                        <p>Stand-alone entities operating exclusively on battery power. Zero human intervention post-start.</p>
+                    </div>
+                    <div class="spec-box">
+                        <h3>Payload</h3>
+                        <p>Manual loading of 3 pucks per sortie. Maximum engagement of 8 pucks per mission.</p>
+                    </div>
+                </div>
+    
+                <div class="specs-row">
+                    <div class="spec-box">
+                        <h3>The Hog Line</h3>
+                        <p>Navigation is unrestricted across the sheet, provided the DROID's footprint remains behind the hog line during deployment.</p>
+                    </div>
+                    <div class="spec-box">
+                        <h3>Combat</h3>
+                        <p>Simultaneous head-to-head engagement. Defensive maneuvers are required to protect the "button" from opponent disruption.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 
     <footer>
         2026 ME210 CurlX
@@ -100,7 +149,6 @@
                 renderWithDigitAnimation(formatted);
             }
 
-            // Initial render without waiting 1 second
             updateCountdown();
             setInterval(updateCountdown, 1000);
         })();
