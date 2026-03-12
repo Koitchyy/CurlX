@@ -96,6 +96,42 @@ nav a:hover { color: #aaa; }
     direction: ltr;
 }
 
+/* strategy page: nucleus + design boxes */
+.strategy-box {
+    padding: 30px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+}
+.strategy-box h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.strategy-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #bbb;
+    margin: 0;
+}
+
+.strategy-transition {
+    max-width: 900px;
+    margin-bottom: 60px;
+    padding: 24px 30px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+}
+.strategy-transition p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #bbb;
+    margin: 0;
+}
+
 footer {
     background-color: #000; 
     color: #555;            
@@ -198,6 +234,7 @@ footer {
 }
 
 .mission-nav li {
+    cursor: pointer;
     font-size: 12px;
     letter-spacing: 2px;
     color: #555;
@@ -212,10 +249,11 @@ footer {
 }
 
 .mission-panel {
-    display: none;
+    padding-top: 80px;
+    scroll-margin-top: 120px;
 }
-.mission-panel.active {
-    display: block;
+.mission-panel:first-child {
+    padding-top: 0;
 }
 
 .mission-text h2 {

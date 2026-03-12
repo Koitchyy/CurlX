@@ -199,17 +199,40 @@
         (function () {
             var navItems = document.querySelectorAll(".mission-nav li[data-tab]");
             var panels = document.querySelectorAll(".mission-panel");
+
+            function setActive(tab) {
+                navItems.forEach(function (n) { n.classList.remove("active"); });
+                var item = document.querySelector(".mission-nav li[data-tab=\"" + tab + "\"]");
+                if (item) item.classList.add("active");
+            }
+
+            function scrollToSection(tab) {
+                var panel = document.getElementById("panel-" + tab);
+                if (panel) panel.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+
             navItems.forEach(function (item) {
-                item.style.cursor = "pointer";
                 item.addEventListener("click", function () {
                     var tab = this.getAttribute("data-tab");
-                    navItems.forEach(function (n) { n.classList.remove("active"); });
-                    panels.forEach(function (p) { p.classList.remove("active"); });
-                    this.classList.add("active");
-                    var panel = document.getElementById("panel-" + tab);
-                    if (panel) panel.classList.add("active");
+                    setActive(tab);
+                    scrollToSection(tab);
                 });
             });
+
+            var observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            var id = entry.target.id;
+                            var tab = id.replace("panel-", "");
+                            setActive(tab);
+                        }
+                    });
+                },
+                { rootMargin: "-120px 0px -70% 0px", threshold: 0 }
+            );
+
+            panels.forEach(function (p) { observer.observe(p); });
         })();
     </script>
 </body>

@@ -83,81 +83,61 @@
             <img src="./imgs/field.png">
         </div>
         
-        <div class="content-grid">
-            <div>
-                <h3>Product Nucleus</h3>
+        <div class="content-grid strategy-row">
+            <div class="strategy-box">
+                <h3>Initial Product Nucleus</h3>
                 <p>
-                    1. Puck Shooting Mechanism
-                    <br>
-                    2. Reload pucks
-                    <br>
-                    3. Chassis + Wheels
-                    <br>
-                    4. Identifying bull's eye direction (from random orientation)
-                    <br>
-                    5. Movement
-                    <br>
-                    6. Hog line Detection
-                    <br>
-                    --------------------------------------------------------------
-                    <br>
-                    7. Detect Starting zone
-                    <br>
+                    1. Puck Shooting Mechanism<br>
+                    2. Reload pucks<br>
+                    3. Chassis + Wheels<br>
+                    4. Identifying bull's eye direction (from random orientation)<br>
+                    5. Movement<br>
+                    6. Hog line Detection<br>
+                    --------------------------------------------------------------<br>
+                    7. Detect Starting zone<br>
                     8. Detecting other pucks (To avoid or displace them)
-                    <br>
+                </p>
+            </div>
+            <div class="strategy-box">
+                <h3>Initial Design Strategy</h3>
+                <p>
+                    1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
+                    2. move the robot in the direction of the farther ir beacon until it reaches the center line<br>
+                    3. rotate the robot until it faces forward on the center line and move forward until at hog line<br>
+                    4. shoot pucks and move backward on center line to the starting box for reloading
                 </p>
             </div>
         </div>
 
-        <div class="content-grid reverse">
-            <div>
+        <div class="strategy-transition">
+            <p>However, once we tested our flywheel shooting mechanism and realized it was capable of much longer distances, we decided to pivot to only moving the robot outside of the starting box before shooting pucks into the bullseye. We modified this later to just leave the starting box and shoot from as close to the starting box as possible.</p>
+        </div>
+
+        <div class="content-grid strategy-row">
+            <div class="strategy-box">
                 <h3>Final Product Nucleus</h3>
                 <p>
-                    1. Puck Shooting Mechanism
-                    <br>
-                    2. Reload pucks
-                    <br>
-                    3. Chassis + Wheels
-                    <br>
-                    4. Identifying bull's eye direction (from random orientation)
-                    <br>
-                    5. Movement
-                    <br>
-                    --------------------------------------------------------------
-                    <br>
-                    6. Hog line Detection
-                    <br>
-                    7. Detect Starting zone
-                    <br>
+                    1. Puck Shooting Mechanism<br>
+                    2. Reload pucks<br>
+                    3. Chassis + Wheels<br>
+                    4. Identifying bull's eye direction (from random orientation)<br>
+                    5. Movement<br>
+                    --------------------------------------------------------------<br>
+                    6. Hog line Detection<br>
+                    7. Detect Starting zone<br>
                     8. Detecting other pucks (To avoid or displace them)
-                    <br>
+                </p>
+            </div>
+            <div class="strategy-box">
+                <h3>Final Design Strategy</h3>
+                <p>
+                    1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
+                    2. move the robot to the center line and out of the box, then rotate to face the bullseye<br>
+                    3. shoot pucks directly into the bullseye with flywheel and stepper motor<br>
+                    4. move backwards into the starting box to reload for 5 seconds
                 </p>
             </div>
         </div>
-
-        <p class="content-grid">
-            <h3>Initial Design Strategy</h3>
-            1. use the IR beacon to align robot by detecting a signal greater than a threshold
-            <br>
-            2. move the robot in the direction of the farther ir beacon until it reaches the center line
-            <br>
-            3. rotate the robot until it faces forward on the center line and move forward until at hog line
-            <br>
-            4. shoot pucks and move backward on center line to the starting box for reloading
-        </p>
-
-        <p class="content-grid reverse">
-            <div>
-                <h3>Final Design Strategy</h3>
-                1. use the IR beacon to align robot by detecting a signal greater than a threshold 
-                <br>
-                2. move the robot to the center line and out of the box, then rotate to face the bullseye 
-                <br>
-                3. shoot pucks directly into the bullseye with flywheel and stepper motor 
-                <br>
-                4. move backwards into the starting box to reload for 5 seconds 
-            </div>
-        </p>
     
         <section class="bom-section">
             <div class="bom-container">
