@@ -478,6 +478,51 @@ footer {
     margin-bottom: 6px;
 }
 
+/* software stack & code block */
+.software-stack {
+    margin-bottom: 30px;
+    padding: 24px 30px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+}
+.software-stack p {
+    margin: 0 0 12px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #bbb;
+}
+.software-stack p:last-child {
+    margin-bottom: 0;
+}
+.software-stack a {
+    color: #fff;
+    text-decoration: none;
+}
+.software-stack a:hover {
+    color: #aaa;
+}
+
+.code-block {
+    margin-bottom: 60px;
+    overflow-x: auto;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.5);
+}
+.code-block pre {
+    margin: 0;
+    padding: 24px 30px;
+    font-family: 'Barlow', 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #bbb;
+    white-space: pre;
+}
+.code-block code {
+    font-family: inherit;
+}
+
 /* page requirements (electrical, software) */
 .page-requirements {
     max-width: 750px;
