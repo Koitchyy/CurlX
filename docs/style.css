@@ -62,6 +62,16 @@ nav a:hover { color: #aaa; }
 .section { padding: 120px 10% 50px; min-height: 80vh; }
 .section h1 { font-size: 40px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
 
+.software-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.software-header h1 {
+    margin-bottom: 0;
+}
+
 /* grid for paragraphs and images */
 .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
 .content-grid img { width: 100%; border: 1px solid #333; border-radius: 4px; }
@@ -488,15 +498,15 @@ footer {
 }
 
 .software-github-box {
-    max-width: 750px;
-    margin-bottom: 40px;
-    padding: 20px 30px;
+    padding: 12px 24px;
     border: 1px solid #333;
     border-radius: 6px;
     background: rgba(255,255,255,0.02);
 }
 .software-github-box a {
-    font-size: 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: #bbb;
     text-decoration: none;
     transition: color 0.3s;
