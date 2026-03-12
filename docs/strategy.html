@@ -30,9 +30,9 @@
         </div>
     </nav>
 
-    <h1>Strategy</h1>
-
     <section class="section">
+        <h1>Strategy</h1>
+
         <div class="game-rules">
             <h2>Game Rules</h2>
             <p class="rules-intro">At the start of a BOTspiel match (as declared audibly):</p>
@@ -84,7 +84,46 @@
             <img src="./imgs/field.png">
         </div>
         
+        <div class="content-grid reverse">
+            <div>
+                <h3>Product Nucleus</h3>
+                <p>
+                    1. Puck Shooting Mechanism
+                    <br>
+                    2. Reload pucks
+                    <br>
+                    3. Chassis + Wheels
+                    <br>
+                    4. Identifying bull's eye direction (from random orientation)
+                    <br>
+                    5. Movement
+                    <br>
+                    6. Hog line Detection
+                    <br>
+                    --------------------------------------------------------------
+                    <br>
+                    7. Detect Starting zone
+                    <br>
+                    8. Detecting other pucks (To avoid or displace them)
+                    <br>
+                </p>
+            </div>
+            <div class="img-placeholder">Strategy flow / decision tree</div>
+        </div>
+
         <p class="section-intro">
+            <h3>Initial Design Strategy</h3>
+            1. use the IR beacon to align robot by detecting a signal greater than a threshold
+            <br>
+            2. move the robot in the direction of the farther ir beacon until it reaches the center line
+            <br>
+            3. rotate the robot until it faces forward on the center line and move forward until at hog line
+            <br>
+            4. shoot pucks and move backward on center line to the starting box for reloading
+        </p>
+
+        <p class="section-intro">
+            <h3>Final Design Strategy</h3>
             1. use the IR beacon to align robot by detecting a signal greater than a threshold 
             <br>
             2. move the robot to the center line and out of the box, then rotate to face the bullseye 
@@ -93,21 +132,10 @@
             <br>
             4. move backwards into the starting box to reload for 5 seconds 
         </p>
-
-        <div class="content-grid reverse">
-            <div>
-                <h3>Product Nucleus</h3>
-                <p>
-                    Explain your prioritized objectives and why (points per second, reliability, complexity).
-                </p>
-            </div>
-            <div class="img-placeholder">Strategy flow / decision tree</div>
-        </div>
-
     
         <section class="bom-section">
             <div class="bom-container">
-                <h2>System Component Manifest (BOM)</h2>
+                <h2>BOM</h2>
                 <p class="bom-subtitle">Total Mission Expenditure: <strong>$164.94</strong></p>
                 
                 <div class="table-wrapper">
