@@ -211,6 +211,13 @@ footer {
     border-bottom: 1px solid #fff;
 }
 
+.mission-panel {
+    display: none;
+}
+.mission-panel.active {
+    display: block;
+}
+
 .mission-text h2 {
     font-size: 40px;
     text-transform: uppercase;

@@ -43,47 +43,90 @@
         <div class="mission-grid">
             <div class="mission-nav">
                 <ul>
-                    <li class="active">01. MISSION OBJECTIVE</li>
-                    <li>02. DROID SPECIFICATIONS</li>
-                    <li>03. ARENA DYNAMICS</li>
+                    <li class="active" data-tab="mission">01. MISSION OBJECTIVE</li>
+                    <li data-tab="specs">02. DROID SPECIFICATIONS</li>
+                    <li data-tab="arena">03. ARENA DYNAMICS</li>
                 </ul>
             </div>
     
             <div class="mission-text">
-                <h2>The Mission</h2>
-                <p class="intro-p">
-                    Curling—historically known as the "Pride of the Winter Olympics"—undergoes a radical evolution for ME210. 
-                    Replacing human athletes with autonomous <strong>DROIDs</strong> (Dynamic Rolling Olympians in Disguise), 
-                    the competition demands high-precision navigation and strategic puck placement.
-                </p>
-    
-                <div class="specs-row">
-                    <div class="spec-box">
-                        <h3>Autonomy</h3>
-                        <p>Stand-alone entities operating exclusively on battery power. Zero human intervention post-start.</p>
+                <div class="mission-panel active" id="panel-mission">
+                    <h2>The Mission</h2>
+                    <p class="intro-p">
+                        Curling—historically known as the "Pride of the Winter Olympics"—undergoes a radical evolution for ME210. 
+                        Replacing human athletes with autonomous <strong>DROIDs</strong> (Dynamic Rolling Olympians in Disguise), 
+                        the competition demands high-precision navigation and strategic puck placement.
+                    </p>
+        
+                    <div class="specs-row">
+                        <div class="spec-box">
+                            <h3>Autonomy</h3>
+                            <p>Stand-alone entities operating exclusively on battery power. Zero human intervention post-start.</p>
+                        </div>
+                        <div class="spec-box">
+                            <h3>Payload</h3>
+                            <p>Manual loading of 3 pucks per sortie. Maximum engagement of 8 pucks per mission.</p>
+                        </div>
                     </div>
-                    <div class="spec-box">
-                        <h3>Payload</h3>
-                        <p>Manual loading of 3 pucks per sortie. Maximum engagement of 8 pucks per mission.</p>
+        
+                    <div class="specs-row">
+                        <div class="spec-box">
+                            <h3>The Hog Line</h3>
+                            <p>Navigation is unrestricted across the sheet, provided the DROID's footprint remains behind the hog line during deployment.</p>
+                        </div>
+                        <div class="spec-box">
+                            <h3>Combat</h3>
+                            <p>Simultaneous head-to-head engagement. Defensive maneuvers are required to protect the "button" from opponent disruption.</p>
+                        </div>
                     </div>
                 </div>
-    
-                <div class="specs-row">
-                    <div class="spec-box">
-                        <h3>The Hog Line</h3>
-                        <p>Navigation is unrestricted across the sheet, provided the DROID's footprint remains behind the hog line during deployment.</p>
+
+                <div class="mission-panel" id="panel-specs">
+                    <h2>Droid Specifications</h2>
+                    <p class="intro-p">
+                        Each DROID must be a stand-alone entity capable of meeting all specifications while connected only to
+                        supplied battery pack(s). Your DROID will start in a randomly selected starting zone (A or B). Here,
+                        you manually load up your DROID with 3 pucks and press start, from whence the DROID must behave
+                        autonomously. DROID players will be allowed to navigate the arena (CURLING SHEET) to take shots
+                        from anywhere, as long as the DROID's starting dimensions do not pass the hog line. After playing
+                        the three pucks, the DROID must return fully into the starting zone in order to receive more pucks. A
+                        maximum of eight pucks may be played. But beware! Your opponents are also racing to place their
+                        pucks as close to the button as possible and may knock your pucks out of the way.
+                    </p>
+                </div>
+
+                <div class="mission-panel" id="panel-arena">
+                    <h2>Arena</h2>
+                    <p class="intro-p">
+                        The BOTspiel Winter Olympics Curling Arena consists of two particle board sheets (4 ft × 8 ft) arranged
+                        end-to-end to form a 4 ft × 16 ft CURLING SHEET.
+                    </p>
+        
+                    <div class="specs-row">
+                        <div class="spec-box">
+                            <h3>House & Rings</h3>
+                            <p>The bull's-eye (House) is centered on the seam between the two particle boards. Button (center most ring) diameter: 8 inches. Middle ring diameter: 18 inches. Outer ring diameter: 24 inches.</p>
+                        </div>
+                        <div class="spec-box">
+                            <h3>Markings & Zones</h3>
+                            <p>Non-reflective black tape marks the center line, hog line, and bounding edges of the starting zones. Starting zones: 16" by 24". Protective perimeter border: 3.5 inches high.</p>
+                        </div>
                     </div>
-                    <div class="spec-box">
-                        <h3>Combat</h3>
-                        <p>Simultaneous head-to-head engagement. Defensive maneuvers are required to protect the "button" from opponent disruption.</p>
+        
+                    <div class="specs-row">
+                        <div class="spec-box">
+                            <h3>Tolerances</h3>
+                            <p>Tolerances on the dimensions of the CURLING SHEET are ±1 inch unless otherwise specified. (Double check this with our CURLING SHEET once it is built.) Once the CURLING SHEET is constructed, its dimensions may supersede the above tolerances.</p>
+                        </div>
+                        <div class="spec-box">
+                            <h3>Infrared Beacons</h3>
+                            <p>Infrared beacons are positioned on either side of the CURLING SHEET, where the two particle boards meet: Distance: 1 inch from the side edge of the CURLING SHEET. Height: 10 inches above surface of the CURLING SHEET. Modulation frequency: 909 Hz. Duty cycle: 50%.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
 
 
 
@@ -151,6 +194,22 @@
 
             updateCountdown();
             setInterval(updateCountdown, 1000);
+        })();
+
+        (function () {
+            var navItems = document.querySelectorAll(".mission-nav li[data-tab]");
+            var panels = document.querySelectorAll(".mission-panel");
+            navItems.forEach(function (item) {
+                item.style.cursor = "pointer";
+                item.addEventListener("click", function () {
+                    var tab = this.getAttribute("data-tab");
+                    navItems.forEach(function (n) { n.classList.remove("active"); });
+                    panels.forEach(function (p) { p.classList.remove("active"); });
+                    this.classList.add("active");
+                    var panel = document.getElementById("panel-" + tab);
+                    if (panel) panel.classList.add("active");
+                });
+            });
         })();
     </script>
 </body>
