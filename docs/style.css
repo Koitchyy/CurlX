@@ -524,12 +524,15 @@ footer {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #bbb;
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .software-github-box a:hover {
-    color: #fff;
+    color: #ccc;
 }
 
 .code-block {
