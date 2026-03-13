@@ -107,6 +107,15 @@ nav a:hover { color: #aaa; }
     background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
 }
 
+.model-caption {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 10px 0 14px;
+    margin: 0;
+}
+
 .content-grid.reverse {
     direction: rtl;
 }
