@@ -93,18 +93,16 @@
         </div>
 
         <div class="elec-box">
-            <div class="content-grid">
-                <div>
-                    <h3>IR Beacon Sensing</h3>
-                    <p>
-                        Our robot detects the IR beacons by rotating and detecting a spike in the voltage input, which represents the signal from the IR beacon. We built a filtering circuit that includes an amplifier, a bandpass filter to remove extraneous frequencies with a peak frequency at 909Hz, and a Schmitt trigger to account for noise in the signal. For the bandpass filter, we chose an active narrow bandpass which limits the passband to 45.45Hz.
-                    </p>
-                    <p style="margin-top: 12px;">
-                        Through testing, we set the threshold amplitude to 2.1V. If the signal read by the Arduino pin exceeds 2.1V, the robot knows it is facing the direction of an IR beacon.
-                    </p>
-                </div>
-                <img src="./imgs/beacon_sch.png" alt="IR beacon sensing schematic">
+            <div>
+                <h3>IR Beacon Sensing</h3>
+                <p>
+                    Our robot detects the IR beacons by rotating the robot and detecting a spike in the voltage input, which represents the signal from the IR beacon. We built a filtering circuit that detects this signal which includes an amplifier, a bandpass filter to remove extraneous frequencies with a peak frequency at 909Hz, and a Schmitt trigger to account for the noise in the signal. For the bandpass filter, we cascaded a lowpass and a highpass filter.
+                </p>
+                <p style="margin-top: 12px;">
+                    Through testing, we set the threshold amplitude of the signal to be 2.1V. If the signal the Arduino pin reads is greater than 2.1V, we know the robot is facing in the direction of an IR beacon.
+                </p>
             </div>
+            <img src="./imgs/beacon_sch.png" alt="IR beacon sensing schematic" style="width: 100%; margin-top: 16px; display: block;">
         </div>
 
 
