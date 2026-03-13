@@ -47,45 +47,61 @@
             <div>
                 <h3>System Overview</h3>
                 <p>
-                    Write a high-level description of your electrical architecture: power source, regulators, motor drivers, sensors,
-                    microcontroller(s), and any key design constraints.
+                    We used an Arduino Mega to control the drivetrain and sensing since a single Arduino Uno could not afford enough pins and simultaneously controlling multiple Arduino Unos proved unnecessarily difficult.
                 </p>
             </div>
-            <div class="img-placeholder">Overview diagram / block diagram</div>
+            <img src="./imgs/elec_sys_overview.png" alt="Electrical system overview diagram">
         </div>
 
         <div class="content-grid reverse">
             <div>
-                <h3>Schematics</h3>
+                <h3>Power</h3>
                 <p>
-                    Add annotated schematics screenshots. Call out important subcircuits (power, motor control, sensing, comms)
-                    and any design decisions (component choices, protections, fusing, etc.).
+                    We used two 7.2V NiMH rechargeable battery packs connected in series. This was then connected to a 5A fuse and a switch to turn on the entire robot, and then to 2 voltage step-down regulators (LM2596S) which outputted 7.7V to the Arduino Mega and 13.4V to the motor drivers (since the L298 motor drivers have a 1V drop internally and we needed to run the motors at 12V).
                 </p>
             </div>
-            <div class="img-placeholder">Schematic image</div>
+            <img src="./imgs/power_sch.png" alt="Power schematic">
         </div>
 
         <div class="content-grid">
             <div>
-                <h3>Wiring & Integration</h3>
+                <h3>Motor Drivers</h3>
                 <p>
-                    Document wiring harness routing, connector choices, strain relief, and integration with the mechanical assembly.
-                    Include photos with labels if possible.
+                    We used two L298 dual-full bridge drivers to drive our motors for the wheels and another L298 to drive the flywheel motor. These were controlled by PWM pulses from the Arduino Mega. For the puck reloader stepper motor, we used a Nema17 stepper motor and the DRV8825 stepper driver.
                 </p>
             </div>
-            <div class="img-placeholder">Wiring photo / layout</div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <img src="./imgs/motor_sch.png" alt="Motor driver schematic">
+                <img src="./imgs/motor_test.png" alt="Motor testing">
+            </div>
         </div>
 
         <div class="content-grid reverse">
             <div>
-                <h3>Testing & Results</h3>
+                <h3>IR Line Detection</h3>
                 <p>
-                    Summarize what you tested (continuity, current draw, brownouts, EMI/noise issues) and the final performance.
+                    Our robot detects the black line on the ground through a conditioning circuit that filters out sunlight (DC) with a high-pass filter and uses Schmitt trigger hysteresis to account for noise.
                 </p>
             </div>
-            <div class="img-placeholder">Scope screenshots / results plot</div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <img src="./imgs/line_sense_sch.png" alt="IR line sensing schematic">
+                <img src="./imgs/line_follow_sch.png" alt="Complete IR line following circuit">
+            </div>
         </div>
-    </section>
+
+        <div class="content-grid">
+            <div>
+                <h3>IR Beacon Sensing</h3>
+                <p>
+                    Our robot detects the IR beacons by rotating and detecting a spike in the voltage input, which represents the signal from the IR beacon. We built a filtering circuit that includes an amplifier, a bandpass filter to remove extraneous frequencies with a peak frequency at 909Hz, and a Schmitt trigger to account for noise in the signal. For the bandpass filter, we chose an active narrow bandpass which limits the passband to 45.45Hz.
+                </p>
+                <p style="margin-top: 12px;">
+                    Through testing, we set the threshold amplitude to 2.1V. If the signal read by the Arduino pin exceeds 2.1V, the robot knows it is facing the direction of an IR beacon.
+                </p>
+            </div>
+            <img src="./imgs/beacon_sch.png" alt="IR beacon sensing schematic">
+        </div>
+
 
     <footer>
         2026 ME210 CurlX
