@@ -583,6 +583,18 @@ footer {
     margin-bottom: 10px;
 }
 
+/* electrical section boxes */
+.elec-box {
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 30px;
+    margin-bottom: 40px;
+    background: rgba(255,255,255,0.02);
+}
+.elec-box .content-grid {
+    margin-bottom: 0;
+}
+
 /*bom*/
 .bom-section {
     padding: 80px 10%;
