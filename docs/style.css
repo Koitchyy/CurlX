@@ -99,6 +99,14 @@ nav a:hover { color: #aaa; }
     background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
 }
 
+.model-viewer-section {
+    margin-bottom: 60px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+}
+
 .content-grid.reverse {
     direction: rtl;
 }
