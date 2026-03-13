@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] } };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
     <nav>
@@ -59,6 +63,11 @@
                         <li>Can be slid on either the steel chrome face or colored plastic face</li>
                         <li>Weight: 8 oz.</li>
                     </ul>
+                </div>
+            </div>
+            <div>
+                <h3>&nbsp;</h3>
+                <div class="mech-constraints">
                     <h4>DROID Constraints</h4>
                     <ul>
                         <li>Maximum footprint in starting zone: 13 in × 13 in</li>
@@ -154,6 +163,58 @@
             </div>
         </div>
 
+        <div class="read-more-row">
+            <button class="read-more-btn" id="shooter-read-more" onclick="toggleShooterDetails()">Read More ↓</button>
+        </div>
+
+        <div class="expandable-panel" id="shooter-details">
+            <div class="expandable-inner">
+                <h3>Motor Specification Calculations</h3>
+
+                <div class="calc-step">
+                    <h4>1. Vertical Kinematics ($y$-direction)</h4>
+                    <p>Determine time of flight based on the maximum allowed puck height of 1 inch:</p>
+                    <p>$$v_f^2 = v_i^2 + 2ad$$</p>
+                    <p>Given $v_i = 0$, $a = 9.81 \, \text{m/s}^2$, $d = 1 \, \text{in} = 0.0254 \, \text{m}$:</p>
+                    <p>$$v_f = \sqrt{2(9.81)(0.0254)} = 0.7059 \, \text{m/s}$$</p>
+                    <p>Time of flight from $v_f = v_i + at$:</p>
+                    <p>$$t = \frac{0.7059}{9.81} = 0.071957 \, \text{s}$$</p>
+                </div>
+
+                <div class="calc-step">
+                    <h4>2. Horizontal Dynamics ($x$-direction)</h4>
+                    <p>Total distance is the sum of airborne distance and sliding distance on the ground. From $\sum F = ma \Rightarrow a = -\mu g$:</p>
+                    <p>$$s = v_0 \, t_{\text{air}} + \frac{v_0^2}{2\mu g}$$</p>
+                    <p>Solving for $v_0$ with $s = 24 \, \text{in} = 0.6096 \, \text{m}$ and $\mu = 0.2$:</p>
+                    <p>$$0.6096 = v_0(0.071957) + \frac{v_0^2}{2(0.2)(9.81)} \implies v_0 = 1.41 \, \text{m/s}$$</p>
+                    <p>Energy required to launch the puck:</p>
+                    <p>$$E = \tfrac{1}{2}mv^2 = \tfrac{1}{2}(0.2268 \, \text{kg})(1.41)^2 = 0.225 \, \text{J}$$</p>
+                </div>
+
+                <div class="calc-step">
+                    <h4>3. Flywheel Geometry and Ideal Velocity</h4>
+                    <p>Center-of-mass velocity under a no-slip condition:</p>
+                    <p>$$\omega_p = \frac{r\,\omega_m}{2r_p} \implies v_{cm} = \frac{r\,\omega_m}{2}$$</p>
+                    <p>Wheel radius $r = 1.325 \, \text{in} = 0.033655 \, \text{m}$; contact arc $d_{\text{contact}} = \frac{\pi}{2} \cdot 1.325 \, \text{in} = 2.0813 \, \text{in}$.</p>
+                    <p>Validated against test data ($r = 2.4 \, \text{in}$, $740 \, \text{RPM}$):</p>
+                    <p>$$v_{cm} = \frac{(2.4 \times 0.0254)}{2} \times \frac{740 \cdot 2\pi}{60} = 2.36 \, \text{m/s}$$</p>
+                </div>
+
+                <div class="calc-step">
+                    <h4>4. System Efficiency and Motor Selection</h4>
+                    <p>Efficiency derived from experimental sliding data at $d = 12 \, \text{in}$, $\mu = 0.2$:</p>
+                    <p>$$\eta = \frac{v_{\text{real}}}{v_{\text{ideal}}} = \frac{\sqrt{2(0.2)(9.81)(12 \times 0.0254)}}{2.36} = 0.4634 \quad (46.3\%)$$</p>
+                    <p>Doubling range to $24 \, \text{in}$ requires $v_{\text{ideal}} \cdot \sqrt{2}$, and therefore $\text{RPM} \cdot \sqrt{2}$.</p>
+                    <div class="calc-final">
+                        <p>Final requirement: $\omega_{NL} \approx 1050{+} \, \text{RPM}$</p>
+                    </div>
+                </div>
+
+                <h3>Final Design</h3>
+                <img src="./imgs/puck_shoot_final.png" alt="Final puck shooting design" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
+            </div>
+        </div>
+
         <div class="content-grid">
             <div>
                 <h3>Puck Storage</h3>
@@ -184,6 +245,20 @@
     <footer>
         2026 ME210 CurlX
     </footer>
+
+    <script>
+        function toggleShooterDetails() {
+            var panel = document.getElementById('shooter-details');
+            var btn = document.getElementById('shooter-read-more');
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                btn.textContent = 'Read More ↓';
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                btn.textContent = 'Read Less ↑';
+            }
+        }
+    </script>
 
     <script>
         (function () {

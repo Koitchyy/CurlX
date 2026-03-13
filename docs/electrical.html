@@ -96,7 +96,7 @@
             <div>
                 <h3>IR Beacon Sensing</h3>
                 <p>
-                    Our robot detects the IR beacons by rotating the robot and detecting a spike in the voltage input, which represents the signal from the IR beacon. We built a filtering circuit that detects this signal which includes an amplifier, a bandpass filter to remove extraneous frequencies with a peak frequency at 909Hz, and a Schmitt trigger to account for the noise in the signal. For the bandpass filter, we cascaded a lowpass and a highpass filter.
+                    Our robot detects the IR beacons by rotating the robot and detecting a spike in the voltage input, which represents the signal from the IR beacon. We built a filtering circuit that detects this signal which includes an amplifier, a bandpass filter to remove extraneous frequencies with a peak frequency at 909Hz, and two cascaded non-inverting amplifiers to amplify the small signal from the phototransistor. For the bandpass filter, we cascaded a lowpass and a highpass filter.
                 </p>
                 <p style="margin-top: 12px;">
                     Through testing, we set the threshold amplitude of the signal to be 2.1V. If the signal the Arduino pin reads is greater than 2.1V, we know the robot is facing in the direction of an IR beacon.

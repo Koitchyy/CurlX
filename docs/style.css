@@ -123,6 +123,116 @@ nav a:hover { color: #aaa; }
     direction: ltr;
 }
 
+/* expandable subsections */
+.read-more-row {
+    margin-top: -30px;
+    margin-bottom: 40px;
+}
+
+.read-more-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #aaa;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+.read-more-btn:hover {
+    border-color: #888;
+    color: #fff;
+}
+
+.expandable-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease;
+}
+
+.expandable-inner {
+    padding: 40px 0 20px;
+    border-top: 1px solid #222;
+    margin-bottom: 40px;
+}
+
+.expandable-inner > h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    margin: 40px 0 20px;
+}
+.expandable-inner > h3:first-child {
+    margin-top: 0;
+}
+
+.calc-step {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #1a1a1a;
+}
+.calc-step:last-of-type {
+    border-bottom: none;
+}
+
+.calc-step h4 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 0 0 14px;
+}
+
+.calc-step p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #bbb;
+    margin: 0 0 6px;
+}
+
+.calc-final {
+    padding: 16px 22px;
+    border: 1px solid #333;
+    background: rgba(255,255,255,0.02);
+    margin-top: 16px;
+}
+.calc-final p {
+    font-size: 15px;
+    color: #fff;
+    margin: 0;
+}
+
+.iteration-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.iteration-card {
+    border: 1px solid #333;
+    padding: 28px;
+    background: rgba(255,255,255,0.02);
+}
+
+.iteration-card h4 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 0 0 12px;
+}
+
+.iteration-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #bbb;
+    margin: 0;
+}
+
 /* strategy page: nucleus + design boxes */
 .strategy-box {
     padding: 30px;
@@ -604,7 +714,7 @@ footer {
 
 .state-diagram-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 40px;
     margin-top: 30px;
 }
