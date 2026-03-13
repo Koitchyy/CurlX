@@ -76,7 +76,24 @@
             <div>
                 <h3>Chassis</h3>
                 <p>
-                    
+                    The chassis consists of two levels to stay within size constraints and to accommodate the puck storage and shooting mechanism.
+                </p>
+                <p style="margin-top: 12px;"><strong>Bottom level:</strong></p>
+                <ul>
+                    <li>Flywheel shooting mechanism</li>
+                    <li>Wheels, motors, and respective motor drivers</li>
+                    <li>Line sensing</li>
+                    <li>Batteries</li>
+                </ul>
+                <p style="margin-top: 12px;"><strong>Upper level:</strong></p>
+                <ul>
+                    <li>Beacon sensing circuit</li>
+                    <li>Puck storage and servo</li>
+                    <li>Arduino Mega and peripherals (voltage regulators, servo motor driver)</li>
+                    <li>Barrier terminal block for power distribution</li>
+                </ul>
+                <p style="margin-top: 12px;">
+                    The two levels are connected by standoffs, and the ramp from the puck storage extends down to the lower level flywheel.
                 </p>
             </div>
             <div class="img-placeholder" style="padding: 0; border: none; background: none;">
@@ -94,10 +111,25 @@
 
         <div class="content-grid">
             <div>
+                <h3>Wheels and Driving</h3>
+                <p>
+                    We picked mecanum wheels so we didn't have to rotate the robot in order to turn. These wheels allow the robot to move sideways without rotating, and the direction of motion is controlled by the software.
+                </p>
+                <p style="margin-top: 12px;">
+                    We used single shear mounting on motors to stay within size constraints. We used high-grade fasteners and PLA-reinforced mounts to handle the radial loads.
+                </p>
+            </div>
+            <div class="img-placeholder">Mecanum wheel / motor mount photo</div>
+        </div>
+
+        <div class="content-grid reverse">
+            <div>
                 <h3>Puck Shooting Mechanism</h3>
                 <p>
-                    Describe the final architecture and the critical design features. Call out interfaces to electrical (mounts, cable paths)
-                    and software (sensor placement, adjustability).
+                    The shooting assembly is powered by a 30W DC motor driving a high-friction 4.8-inch OD wheel.
+                </p>
+                <p style="margin-top: 12px;">
+                    To achieve an 8-foot range, we implemented a software-based "boost" phase. Immediately after a puck is detected leaving the chamber, the motor is pulsed to 100% duty cycle to rapidly recover the RPM lost to kinetic energy transfer before the next puck is pushed through.
                 </p>
             </div>
             <div class="img-placeholder" style="padding: 0; border: none; background: none;">
@@ -113,11 +145,17 @@
             </div>
         </div>
 
-        <div class="content-grid reverse">
+        <div class="content-grid">
             <div>
                 <h3>Puck Storage</h3>
                 <p>
-                    Add photos of the build process, issues encountered, fixes, and measured performance.
+                    We iterated through many designs of puck storage, including a ramp with doors and a conveyor belt, before settling on a revolving door mechanism for its mechanical reliability.
+                </p>
+                <p style="margin-top: 12px;">
+                    We used a servo (NEMA17) to rotate the "doors" of a circular storage unit. The unit is divided into four 90-degree chambers — three store pucks and one feeds to the ramp down to the flywheel.
+                </p>
+                <p style="margin-top: 12px;">
+                    The servo rotation is controlled by a timer set based on the time it takes for the flywheel to shoot a puck, and there is a 5-second timer for reloading pucks.
                 </p>
             </div>
             <div class="img-placeholder" style="padding: 0; border: none; background: none;">
