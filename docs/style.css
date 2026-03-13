@@ -595,6 +595,46 @@ footer {
     margin-bottom: 0;
 }
 
+/*state diagrams*/
+.state-diagram-section {
+    padding: 80px 10%;
+    background: #000;
+    border-top: 1px solid #333;
+}
+
+.state-diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.state-diagram-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 24px;
+}
+
+.state-diagram-card h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 16px;
+}
+
+.state-diagram-card img {
+    width: 100%;
+    display: block;
+    filter: brightness(0.95);
+}
+
+@media (max-width: 768px) {
+    .state-diagram-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /*bom*/
 .bom-section {
     padding: 80px 10%;
