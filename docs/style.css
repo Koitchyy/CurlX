@@ -351,6 +351,83 @@ footer {
     margin-left: 15px;
     font-size: 16px; 
 }
+/* robot full-bleed showcase — SpaceX style */
+.robot-showcase {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.robot-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.45) saturate(0.8);
+    display: block;
+}
+
+.robot-dim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0.05) 40%,
+        rgba(0,0,0,0.05) 60%,
+        rgba(0,0,0,0.6) 100%
+    );
+}
+
+.robot-meta {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.robot-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+}
+
+/* arena field image */
+.arena-figure {
+    margin: 50px 0 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #050505;
+}
+
+.arena-figure img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.arena-figure figcaption {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 12px 20px;
+    text-align: right;
+    border-top: 1px solid #222;
+    background: rgba(255,255,255,0.01);
+    margin: 0;
+}
+
 .mission-specs {
     padding: 100px 10%;
     background: #000;
@@ -514,6 +591,106 @@ footer {
 @media (max-width: 500px) {
     .team-members {
         grid-template-columns: 1fr;
+    }
+}
+
+/* scrapbook section — team page */
+.scrapbook-section {
+    padding: 80px 10% 100px;
+    background: #000;
+    border-top: 1px solid #1a1a1a;
+}
+
+.scrapbook-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 16px;
+}
+
+.scrapbook-heading {
+    font-size: 40px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+    margin: 0 0 40px;
+}
+
+.scrapbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "comp   comp   mjk"
+        "chandu koichi martin"
+        "mc     mc     mc";
+    gap: 3px;
+}
+
+.scrapbook-item {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    background: #050505;
+}
+
+.scrapbook-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: brightness(0.82) saturate(0.85);
+    transition: filter 0.4s ease;
+}
+
+.scrapbook-item:hover img {
+    filter: brightness(0.95) saturate(1);
+}
+
+.scrapbook-item figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 14px 12px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+/* grid area assignments */
+.sb-competition { grid-area: comp;   min-height: 340px; }
+.sb-mjk         { grid-area: mjk;    min-height: 340px; }
+.sb-chandu      { grid-area: chandu; min-height: 260px; }
+.sb-koichi      { grid-area: koichi; min-height: 260px; }
+.sb-martin      { grid-area: martin; min-height: 260px; }
+.sb-mc          { grid-area: mc;     min-height: 300px; }
+
+@media (max-width: 900px) {
+    .scrapbook-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "comp   comp"
+            "mjk    chandu"
+            "koichi martin"
+            "mc     mc";
+    }
+}
+
+@media (max-width: 600px) {
+    .scrapbook-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "comp"
+            "mjk"
+            "chandu"
+            "koichi"
+            "martin"
+            "mc";
     }
 }
 
