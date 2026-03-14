@@ -697,13 +697,38 @@ footer {
 
 /* game rules (strategy page) */
 .game-rules {
-    max-width: 750px;
     margin-bottom: 60px;
     padding: 30px;
     border: 1px solid #333;
     border-radius: 6px;
     background: rgba(255,255,255,0.02);
 }
+
+.rules-arena-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.rules-text-col {}
+.rules-arena-col {
+    position: sticky;
+    top: 90px;
+}
+
+.scoring-penalties-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 30px;
+}
+
+.scoring-col {}
+.penalties-col {}
 .game-rules h2 {
     font-size: 28px;
     text-transform: uppercase;
