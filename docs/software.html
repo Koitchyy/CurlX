@@ -67,7 +67,29 @@
             <div class="bom-container">
                 <h2>Drivetrain</h2>
                 <div class="sw-content-row">
-                    <p class="section-intro" style="margin-bottom: 0;">The drivetrain software manages 4 motors × 3 pins = 12 I/O pins on the Arduino Mega which handles digital direction logic (CW/CCW) and PWM speed control. We manipulate these in order to move the robot forward, backward, or sideways.</p>
+                    <div>
+                        <p class="section-intro" style="margin-bottom: 0;">The drivetrain software manages 4 motors × 3 pins = 12 I/O pins on the Arduino Mega which handles digital direction logic (CW/CCW) and PWM speed control. We manipulate these in order to move the robot forward, backward, or sideways.</p>
+                        <div class="table-wrapper" style="margin-top: 24px;">
+                            <table class="bom-table" style="width: auto; min-width: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Function</th>
+                                        <th>FL</th>
+                                        <th>FR</th>
+                                        <th>BL</th>
+                                        <th>BR</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><code>forward()</code></td><td>CW</td><td>CCW</td><td>CCW</td><td>CW</td><td>Move forward</td></tr>
+                                    <tr><td><code>backward()</code></td><td>CCW</td><td>CW</td><td>CW</td><td>CCW</td><td>Move backward</td></tr>
+                                    <tr><td><code>shiftRight()</code></td><td>CW</td><td>CW</td><td>CW</td><td>CW</td><td>Move right</td></tr>
+                                    <tr><td><code>shiftLeft()</code></td><td>CCW</td><td>CCW</td><td>CCW</td><td>CCW</td><td>Move left</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="sw-code-col">
                         <div class="sw-snippet-wrap">
                             <div class="sw-snippet-header">MecanumWheels.cpp</div>
@@ -90,26 +112,6 @@ void MecanumWheels::CCW(int in1, int in2) {
                             View Code
                         </a>
                     </div>
-                </div>
-                <div class="table-wrapper">
-                    <table class="bom-table">
-                        <thead>
-                            <tr>
-                                <th>Function</th>
-                                <th>FL</th>
-                                <th>FR</th>
-                                <th>BL</th>
-                                <th>BR</th>
-                                <th>Result</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><code>forward()</code></td><td>CW</td><td>CCW</td><td>CCW</td><td>CW</td><td>The robot moves straight ahead.</td></tr>
-                            <tr><td><code>backward()</code></td><td>CCW</td><td>CW</td><td>CW</td><td>CCW</td><td>The robot moves straight back.</td></tr>
-                            <tr><td><code>shiftRight()</code></td><td>CW</td><td>CW</td><td>CW</td><td>CW</td><td>Lateral Translation: The robot moves sideways to the right.</td></tr>
-                            <tr><td><code>shiftLeft()</code></td><td>CCW</td><td>CCW</td><td>CCW</td><td>CCW</td><td>Lateral Translation: The robot moves sideways to the left.</td></tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </section>
@@ -219,16 +221,7 @@ void move90Degrees() {
         <section class="prelim-section" id="state-diagrams" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>Final State Diagrams</h2>
-                <div class="sw-content-row">
-                    <p class="section-intro" style="margin-bottom: 0;">Mission-critical control logic governing autonomous operation. The main loop samples the IR beacon, drives the mecanum chassis through timed states, and fires the flywheel in a non-blocking shooting sequence — all within a hard 2-minute kill timer.</p>
-                    <div class="sw-code-col">
-                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/Fast_Competition_Code" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-                <div class="state-diagram-grid">
+<div class="state-diagram-grid">
                     <div class="state-diagram-card">
                         <h3>Main State Diagram</h3>
                         <img src="./imgs/main_state_diag.png" alt="Main State Diagram">
