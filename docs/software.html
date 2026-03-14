@@ -20,14 +20,17 @@
                     <li><a href="strategy.html#game-rules">Game Rules</a></li>
                     <li><a href="strategy.html#preliminary-design">Preliminary Design</a></li>
                     <li><a href="strategy.html#final-design">Final Design</a></li>
-                    <li><a href="software.html#state-diagrams">State Diagrams</a></li>
                     <li><a href="strategy.html#checkoff">Checkoff</a></li>
                     <li><a href="strategy.html#competition">Competition</a></li>
                     <li><a href="strategy.html#bom">BOM</a></li>
                 </ul>
             </li>
             <li><a href="electrical.html">Electrical</a></li>
-            <li><a href="software.html">Software</a></li>
+            <li class="nav-dropdown"><a href="software.html">Software</a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="software.html#state-diagrams">State Diagrams</a></li>
+                </ul>
+            </li>
             <li><a href="mechanical.html">Mechanical</a></li>
             <li><a href="reflection.html">Reflection</a></li>
         </ul>
@@ -60,14 +63,31 @@
             </ul>
         </div>
 
-        <p class="section-intro">
-            The Arduino Mega is driven by C++ in the standard Arduino IDE, and source control and collaboration is used through Github.
-        </p>
-
-        <section class="prelim-section" id="drivetrain">
+        <section class="prelim-section" id="drivetrain" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>Drivetrain</h2>
-                <p class="section-intro">The drivetrain software manages 4 motors × 3 pins = 12 I/O pins on the Arduino Mega which handles digital direction logic (CW/CCW) and PWM speed control. We manipulate these in order to move the robot forward, backward, or sideways.</p>
+                <div class="sw-content-row">
+                    <p class="section-intro" style="margin-bottom: 0;">The drivetrain software manages 4 motors × 3 pins = 12 I/O pins on the Arduino Mega which handles digital direction logic (CW/CCW) and PWM speed control. We manipulate these in order to move the robot forward, backward, or sideways.</p>
+                    <div class="sw-code-col">
+<pre class="sw-snippet">void MecanumWheels::forward()    {  CW(_fl); CCW(_fr); CCW(_bl);  CW(_br); }
+void MecanumWheels::backward()   { CCW(_fl);  CW(_fr);  CW(_bl); CCW(_br); }
+void MecanumWheels::shiftRight() {  CW(_fl);  CW(_fr);  CW(_bl);  CW(_br); }
+void MecanumWheels::shiftLeft()  { CCW(_fl); CCW(_fr); CCW(_bl); CCW(_br); }
+void MecanumWheels::turnRight()  {  CW(_fl);  CW(_fr); CCW(_bl); CCW(_br); }
+
+// H-bridge helpers drive L298N IN1/IN2 pins
+void MecanumWheels::CW(int in1, int in2) {
+  digitalWrite(in1, LOW); digitalWrite(in2, HIGH);
+}
+void MecanumWheels::CCW(int in1, int in2) {
+  digitalWrite(in1, HIGH); digitalWrite(in2, LOW);
+}</pre>
+                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/MecanumWheels" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
                 <div class="table-wrapper">
                     <table class="bom-table">
                         <thead>
@@ -91,32 +111,92 @@
             </div>
         </section>
 
-        <section class="prelim-section" id="ir-beacon">
+        <section class="prelim-section" id="ir-beacon" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>IR Beacon Sensing</h2>
-                <p class="section-intro">The beacon sensing system is the robot's long-range guidance, utilizing an analog signal processing chain to identify the 909 Hz infrared towers. The code executes a 360° chassis rotation while continuously sampling the <code>beaconPin</code> (A0) to detect a specific voltage displacement from a 2.5V reference center. By calculating the <code>maxDisplacement</code> within a set <code>sampleWindow</code>, the logic filters for the peak signal intensity. Once the displacement exceeds the <code>thresholdAmplitude</code> (calibrated at 1.9V), the <code>isThresholdExceeded</code> flag triggers an immediate <code>robot.stop()</code> command. This process ensures the robot precisely aligns its firing axis with the center of the arena's IR beacon before beginning its shooting sequence.</p>
+                <div class="sw-content-row">
+                    <p class="section-intro" style="margin-bottom: 0;">The beacon sensing system is the robot's long-range guidance, utilizing an analog signal processing chain to identify the 909 Hz infrared towers. The code executes a 360° chassis rotation while continuously sampling the <code>beaconPin</code> (A0) to detect a specific voltage displacement from a 2.5V reference center. By calculating the <code>maxDisplacement</code> within a set <code>sampleWindow</code>, the logic filters for the peak signal intensity. Once the displacement exceeds the <code>thresholdAmplitude</code> (calibrated at 1.9V), the <code>isThresholdExceeded</code> flag triggers an immediate <code>robot.stop()</code> command. This process ensures the robot precisely aligns its firing axis with the center of the arena's IR beacon before beginning its shooting sequence.</p>
+                    <div class="sw-code-col">
+<pre class="sw-snippet">int raw = analogRead(sensorPin);
+float voltage = (raw * 5.0) / 1023.0;
+
+// near ~5.0V | far ~2.2V | ambient: low mV
+bool isFarBeacon  = (voltage >= FAR_MIN_V  &&
+                     voltage <= FAR_MAX_V);
+bool isNearBeacon = (voltage >= NEAR_MIN_V &&
+                     voltage <= NEAR_MAX_V);
+
+facingFarBeacon  = isFarBeacon && !isNearBeacon;
+facingNearBeacon = isNearBeacon;</pre>
+                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/BeaconSensor" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="prelim-section" id="ir-line">
+        <section class="prelim-section" id="ir-line" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>IR Line Sensing</h2>
-                <p class="section-intro">The line sensing system provides short-range positioning by detecting the black hog lines on the arena floor through frequency-modulated reflectance. In <code>setup()</code>, the <code>tone()</code> function watermarks the emitted IR light at 1250 Hz, which is then captured by a phototransistor on an interrupt-enabled pin (18). The <code>attachInterrupt()</code> function triggers the <code>countPulse()</code> ISR on every falling edge, allowing the software to measure the density of reflected light within a 20ms <code>sampleWindow</code>. The <code>isLineDetected()</code> function monitors the <code>savedCount</code>; when the robot passes over black tape, the IR absorption causes the pulse count to drop below a calibrated threshold (e.g., 50), signaling the robot to transition from shifting sideways into its shooting state.</p>
+                <div class="sw-content-row">
+                    <p class="section-intro" style="margin-bottom: 0;">The line sensing system provides short-range positioning by detecting the black hog lines on the arena floor through frequency-modulated reflectance. In <code>setup()</code>, the <code>tone()</code> function watermarks the emitted IR light at 1250 Hz, which is then captured by a phototransistor on an interrupt-enabled pin (18). The <code>attachInterrupt()</code> function triggers the <code>countPulse()</code> ISR on every falling edge, allowing the software to measure the density of reflected light within a 20ms <code>sampleWindow</code>. The <code>isLineDetected()</code> function monitors the <code>savedCount</code>; when the robot passes over black tape, the IR absorption causes the pulse count to drop below a calibrated threshold (e.g., 50), signaling the robot to transition from shifting sideways into its shooting state.</p>
+                    <div class="sw-code-col">
+<pre class="sw-snippet">DriveState determineState(bool lead, bool left, bool right) {
+  if ( lead && !left && !right) return FORWARD;
+  if ( lead &&  left && !right) return SLIGHT_LEFT;
+  if (!lead &&  left && !right) return HARD_LEFT;
+  if ( lead && !left &&  right) return SLIGHT_RIGHT;
+  if (!lead && !left &&  right) return HARD_RIGHT;
+  return LOST;
+}
+
+// ISRs count falling edges of 1250 Hz modulated IR.
+// Low pulse count = black tape absorbed IR = line detected.
+void countLead() { pulseLead++; }
+void countLeft() { pulseLeft++; }
+void countRight() { pulseRight++; }</pre>
+                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/LineFollow" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="prelim-section" id="stepper">
+        <section class="prelim-section" id="stepper" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>Stepper</h2>
-                <p class="section-intro">The logic for the puck loader utilizes a non-blocking state machine to synchronize the stepper motor with the robot's shooting sequence. Instead of using blocking loops that would freeze the robot's sensors, the system employs a <code>request90DegreeTurn()</code> trigger. When the main mission code reaches the SHOOT state, it sets a target step count (calculated at 800 steps for a 90° indexing turn using 1/16 microstepping). The <code>runStepperNonBlocking()</code> function then pulses the <code>stepPin</code> only when the required interval has elapsed, allowing the Arduino to simultaneously manage flywheel RPM and IR beacon tracking. This ensures the revolving magazine door loads one puck into the firing chamber without interrupting the robot's other tasks, i.e. monitoring the IR beacon.</p>
+                <div class="sw-content-row">
+                    <p class="section-intro" style="margin-bottom: 0;">The logic for the puck loader utilizes a non-blocking state machine to synchronize the stepper motor with the robot's shooting sequence. Instead of using blocking loops that would freeze the robot's sensors, the system employs a <code>request90DegreeTurn()</code> trigger. When the main mission code reaches the SHOOT state, it sets a target step count (calculated at 800 steps for a 90° indexing turn using 1/16 microstepping). The <code>runStepperNonBlocking()</code> function then pulses the <code>stepPin</code> only when the required interval has elapsed, allowing the Arduino to simultaneously manage flywheel RPM and IR beacon tracking. This ensures the revolving magazine door loads one puck into the firing chamber without interrupting the robot's other tasks, i.e. monitoring the IR beacon.</p>
+                    <div class="sw-code-col">
+<pre class="sw-snippet">// 90° = 50 full steps × 16 microsteps = 800 pulses
+const int stepsPer90 = 50 * 16;
+
+void move90Degrees() {
+  for (int x = 0; x &lt; stepsPer90; x++) {
+    digitalWrite(stepPin, HIGH);
+    delayMicroseconds(625);
+    digitalWrite(stepPin, LOW);
+    delayMicroseconds(625);
+  }
+}</pre>
+                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/Stepper" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="prelim-section" id="helpers">
+        <section class="prelim-section" id="helpers" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>Other Helper Functions</h2>
                 <p class="section-intro">These manage the transition between states and ensure the hardware operates within precise timing windows.</p>
-                <ul class="rules-list">
+                <ul class="rules-list" style="color: #bbb; line-height: 1.7; margin: 0 0 0 20px; padding: 0; font-size: 16px;">
                     <li><code>startNewState(State newState)</code>: resets the <code>stateStartTime</code> for the next state and dynamically updates the motor trim (using <code>robot.begin</code>) to compensate for mechanical drift during specific maneuvers like reversing.</li>
                     <li><code>isTimeElapsed(startTime, duration)</code>: non-blocking timer. It compares the current <code>millis()</code> against a reference point to check if a phase is complete, allowing the computer to keep processing other sensors in the meantime.</li>
                     <li><code>globalStartTime</code> &amp; <code>MAX_RUNTIME_MS</code>: Master Kill Switch. This 2-minute timer ensures the robot immediately cuts all power to the flywheel and drivetrain at the competition's hard time limit.</li>
@@ -124,10 +204,39 @@
             </div>
         </section>
 
-        <section class="prelim-section" id="state-diagrams">
+        <section class="prelim-section" id="state-diagrams" style="padding-left: 0; padding-right: 0;">
             <div class="bom-container">
                 <h2>Final State Diagrams</h2>
-                <p class="bom-subtitle">Mission-critical control logic governing autonomous operation</p>
+                <div class="sw-content-row">
+                    <p class="section-intro" style="margin-bottom: 0;">Mission-critical control logic governing autonomous operation. The main loop samples the IR beacon, drives the mecanum chassis through timed states, and fires the flywheel in a non-blocking shooting sequence — all within a hard 2-minute kill timer.</p>
+                    <div class="sw-code-col">
+<pre class="sw-snippet">float getMaxDisplacement() {
+  float maxDisp = 0.0;
+  unsigned long t = millis();
+  while (millis() - t &lt; 50) {
+    float v = (analogRead(beaconPin) * 5.0) / 1023.0;
+    float d = abs(v - 2.5);
+    if (d > maxDisp) maxDisp = d;
+  }
+  return maxDisp;
+}
+
+void runStepperNonBlocking() {
+  if (!stepperActive) return;
+  if (micros() - lastStepMicros >= stepDelayMicros) {
+    lastStepMicros = micros();
+    stepPinState = !stepPinState;
+    digitalWrite(stepPin, stepPinState);
+    if (stepPinState == LOW && ++currentStepCount >= stepsTo90)
+      stepperActive = false;
+  }
+}</pre>
+                        <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/Fast_Competition_Code" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            Final Competition Code
+                        </a>
+                    </div>
+                </div>
                 <div class="state-diagram-grid">
                     <div class="state-diagram-card">
                         <h3>Main State Diagram</h3>

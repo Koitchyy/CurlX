@@ -916,6 +916,41 @@ footer {
     height: 20px;
 }
 
+.sw-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 5px;
+}
+.sw-section-header h2 {
+    margin-bottom: 0;
+}
+.sw-github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 13px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    color: #aaa;
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+.sw-github-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #777;
+    color: #fff;
+}
+.sw-github-btn svg {
+    flex-shrink: 0;
+}
+
 .code-block {
     max-width: 900px;
     margin-bottom: 60px;
@@ -1028,6 +1063,32 @@ footer {
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 5px;
+}
+.sw-content-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.sw-code-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sw-snippet {
+    background: #080808;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.65;
+    color: #999;
+    white-space: pre;
+    margin: 0;
 }
 
 .bom-subtitle {
