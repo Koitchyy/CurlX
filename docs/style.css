@@ -23,6 +23,35 @@ nav a {
 }
 nav a:hover { color: #aaa; }
 
+/* strategy dropdown */
+nav ul li.nav-dropdown { position: relative; }
+nav ul li.nav-dropdown .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.92);
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px 0;
+    margin: 8px 0 0 0;
+    list-style: none;
+    min-width: 160px;
+    gap: 0;
+    z-index: 1001;
+}
+nav ul li.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+nav ul li.nav-dropdown .nav-dropdown-menu li { padding: 0; }
+nav ul li.nav-dropdown .nav-dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    white-space: nowrap;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+nav ul li.nav-dropdown .nav-dropdown-menu a:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
 
 
 .hero { 
