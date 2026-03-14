@@ -142,6 +142,25 @@
             </div>
         </div>
 
+        <div class="read-more-row">
+            <button class="read-more-btn" id="wheels-read-more" onclick="toggleWheelDetails()">Read More ↓</button>
+        </div>
+
+        <div class="expandable-panel" id="wheel-details">
+            <div class="expandable-inner">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <img src="./imgs/motor_test.png" alt="Testing the motors with a L298 driver" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
+                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Testing the motors with a L298 driver</p>
+                    </div>
+                    <div>
+                        <video src="./vids/init_wheels_test.MOV" controls style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;"></video>
+                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">The robot moves!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="content-grid reverse">
             <div>
                 <h3>Puck Shooting Mechanism</h3>
@@ -212,7 +231,38 @@
                     </div>
                 </div>
 
+                <h3>Initial Design</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <video src="./imgs/init_shoot_test.mov" controls style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;"></video>
+                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Test footage</p>
+                    </div>
+                    <div>
+                        <img src="./imgs/init_shoot_top.png" alt="Initial shooting mechanism top view" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
+                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Top view</p>
+                    </div>
+                </div>
+
+                <div class="calc-final" style="margin-bottom: 40px;">
+                    <p style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #888; margin: 0 0 10px;">Initial Design Test Results</p>
+                    <p>Wheel size: 2.65 in &nbsp;·&nbsp; Motor RPM: 742 (measured) &nbsp;·&nbsp; Voltage: 33V</p>
+                    <p style="margin-top: 8px; color: #fff;">Distance achieved: <strong>7.7 in</strong></p>
+                </div>
+
+                <p style="font-size: 16px; line-height: 1.7; color: #bbb; margin: 0 0 48px;">
+                    The transition from a small 3D-printed roller to a larger high-inertia flywheel was a critical pivot that solved the energy transfer issues inherent in firing heavy 8.0oz pucks. By exponentially increasing the wheel's moment of inertia, the system maintained its RPM during engagement, preventing the motor from stalling under load.
+                    This larger radius provided the necessary tangential velocity to hit the 1.41 m/s target speed, while the switch to a high-traction rubber surface ensured a no-slip condition, delivering the consistent power required to reliably reach the 8-foot scoring zone.
+                </p>
+
                 <h3>Final Design</h3>
+
+                <div class="calc-final" style="margin-bottom: 24px;">
+                    <p style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #888; margin: 0 0 10px;">Final Design Test Results</p>
+                    <p>Wheel size: 4.8 in &nbsp;·&nbsp; Same motor parameters</p>
+                    <p style="margin-top: 8px; color: #fff;">Distance achieved: <strong>12 in</strong></p>
+                </div>
+
                 <img src="./imgs/puck_shoot_final.png" alt="Final puck shooting design" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
             </div>
         </div>
@@ -249,6 +299,18 @@
     </footer>
 
     <script>
+        function toggleWheelDetails() {
+            var panel = document.getElementById('wheel-details');
+            var btn = document.getElementById('wheels-read-more');
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                btn.textContent = 'Read More ↓';
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                btn.textContent = 'Read Less ↑';
+            }
+        }
+
         function toggleShooterDetails() {
             var panel = document.getElementById('shooter-details');
             var btn = document.getElementById('shooter-read-more');

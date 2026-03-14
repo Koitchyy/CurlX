@@ -989,3 +989,149 @@ footer {
     background: rgba(255, 255, 255, 0.03);
     color: #fff;
 }
+
+/* preliminary design section */
+.prelim-section {
+    padding: 80px 10%;
+    background: #000;
+    border-top: 1px solid #333;
+}
+
+.prelim-subheading {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+/* interactive initial state diagram */
+.init-statediag-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 4px;
+    border: 1px solid #222;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.init-statediag-blur {
+    width: 100%;
+    display: block;
+    filter: blur(3px) brightness(0.65);
+}
+
+.init-diag-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.init-diag-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.2s;
+}
+
+.init-diag-zone:last-child {
+    border-right: none;
+}
+
+.init-diag-zone:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.init-diag-zone-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 2px;
+    background: rgba(0,0,0,0.45);
+    transition: color 0.2s, border-color 0.2s;
+    pointer-events: none;
+}
+
+.init-diag-zone:hover .init-diag-zone-label {
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
+}
+
+/* state diagram modal */
+.init-diag-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+.init-diag-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.init-diag-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+}
+
+.init-diag-modal-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 90vh;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #0a0a0a;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.init-diag-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid #222;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.init-diag-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.init-diag-close:hover {
+    color: #fff;
+}
+
+#initDiagZoom {
+    display: block;
+    max-width: 100%;
+    max-height: calc(90vh - 56px);
+    object-fit: contain;
+}

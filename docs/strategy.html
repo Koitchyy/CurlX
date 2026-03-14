@@ -83,29 +83,69 @@
             <img src="./imgs/field.png">
         </div>
         
-        <div class="content-grid strategy-row">
-            <div class="strategy-box">
-                <h3>Initial Product Nucleus</h3>
-                <p>
-                    1. Puck Shooting Mechanism<br>
-                    2. Reload pucks<br>
-                    3. Chassis + Wheels<br>
-                    4. Identifying bull's eye direction (from random orientation)<br>
-                    5. Movement<br>
-                    6. Hog line Detection<br>
-                    --------------------------------------------------------------<br>
-                    7. Detect Starting zone<br>
-                    8. Detecting other pucks (To avoid or displace them)
-                </p>
+        <section class="prelim-section">
+            <div class="bom-container">
+                <h2>Preliminary Design</h2>
+                <p class="bom-subtitle">Initial product nucleus, design strategy, and state diagram before pivoting</p>
+
+                <div class="content-grid strategy-row" style="margin-bottom: 48px;">
+                    <div class="strategy-box">
+                        <h3>Initial Product Nucleus</h3>
+                        <p>
+                            1. Puck Shooting Mechanism<br>
+                            2. Reload pucks<br>
+                            3. Chassis + Wheels<br>
+                            4. Identifying bull's eye direction (from random orientation)<br>
+                            5. Movement<br>
+                            6. Hog line Detection<br>
+                            --------------------------------------------------------------<br>
+                            7. Detect Starting zone<br>
+                            8. Detecting other pucks (To avoid or displace them)
+                        </p>
+                    </div>
+                    <div class="strategy-box">
+                        <h3>Initial Design Strategy</h3>
+                        <p>
+                            1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
+                            2. move the robot in the direction of the farther ir beacon until it reaches the center line<br>
+                            3. rotate the robot until it faces forward on the center line and move forward until at hog line<br>
+                            4. shoot pucks and move backward on center line to the starting box for reloading
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="prelim-subheading" style="margin-top: 48px;">Initial Robot Design</h3>
+                <p class="bom-subtitle" style="margin-bottom: 16px;">Layout and legend for the initial robot design concept.</p>
+                <img src="./imgs/init_robot_design.png" alt="Initial robot design layout and legend" style="width: 100%; display: block; border: 1px solid #222; border-radius: 4px; margin-bottom: 48px;">
+
+                <h3 class="prelim-subheading">Initial State Diagram</h3>
+                <p class="bom-subtitle" style="margin-bottom: 16px;">Click a section of the diagram to see a detailed view.</p>
+
+                <div class="init-statediag-wrapper">
+                    <img src="./imgs/init_entire_statediag.png" alt="Initial State Diagram Overview" class="init-statediag-blur">
+                    <div class="init-diag-overlay">
+                        <div class="init-diag-zone" data-img="./imgs/init_detect_statediag.png" data-label="Detection">
+                            <span class="init-diag-zone-label">Detection</span>
+                        </div>
+                        <div class="init-diag-zone" data-img="./imgs/init_linefollow_statediag.png" data-label="Line Following">
+                            <span class="init-diag-zone-label">Line Following</span>
+                        </div>
+                        <div class="init-diag-zone" data-img="./imgs/init_shooting_statediag.png" data-label="Shooting">
+                            <span class="init-diag-zone-label">Shooting</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="strategy-box">
-                <h3>Initial Design Strategy</h3>
-                <p>
-                    1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
-                    2. move the robot in the direction of the farther ir beacon until it reaches the center line<br>
-                    3. rotate the robot until it faces forward on the center line and move forward until at hog line<br>
-                    4. shoot pucks and move backward on center line to the starting box for reloading
-                </p>
+        </section>
+
+        <div class="init-diag-modal" id="initDiagModal">
+            <div class="init-diag-modal-backdrop" id="initDiagBackdrop"></div>
+            <div class="init-diag-modal-content">
+                <div class="init-diag-modal-header">
+                    <span id="initDiagTitle"></span>
+                    <button class="init-diag-close" id="initDiagClose">&times;</button>
+                </div>
+                <img id="initDiagZoom" src="" alt="Zoomed state diagram">
             </div>
         </div>
 
@@ -262,6 +302,34 @@
             // Initial render without waiting 1 second
             updateCountdown();
             setInterval(updateCountdown, 1000);
+        })();
+
+        (function () {
+            var zones = document.querySelectorAll('.init-diag-zone');
+            var modal = document.getElementById('initDiagModal');
+            var backdrop = document.getElementById('initDiagBackdrop');
+            var closeBtn = document.getElementById('initDiagClose');
+            var zoomImg = document.getElementById('initDiagZoom');
+            var titleEl = document.getElementById('initDiagTitle');
+
+            zones.forEach(function (zone) {
+                zone.addEventListener('click', function () {
+                    zoomImg.src = zone.getAttribute('data-img');
+                    titleEl.textContent = zone.getAttribute('data-label');
+                    modal.classList.add('active');
+                });
+            });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                zoomImg.src = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeModal();
+            });
         })();
     </script>
 </body>
