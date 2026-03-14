@@ -608,9 +608,31 @@ footer {
 .team-member .team-role {
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 2px; 
+    letter-spacing: 2px;
     color: #888;
-    margin: 0; 
+    margin: 0 0 16px;
+}
+
+.team-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0a66c2;
+    text-decoration: none;
+    transition: color 0.2s, opacity 0.2s;
+    opacity: 0.85;
+}
+.team-linkedin:hover {
+    color: #378fe9;
+    opacity: 1;
+}
+.team-linkedin svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 @media (max-width: 900px) {
@@ -869,24 +891,29 @@ footer {
 }
 
 .software-github-box {
-    padding: 12px 24px;
-    border: 1px solid #333;
+    padding: 14px 32px;
+    border: 1px solid #555;
     border-radius: 6px;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.06);
+    transition: background 0.2s, border-color 0.2s;
+}
+.software-github-box:hover {
+    background: rgba(255,255,255,0.11);
+    border-color: #888;
 }
 .software-github-box a {
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
-.software-github-box a:hover {
-    color: #ccc;
+.software-github-box svg {
+    width: 20px;
+    height: 20px;
 }
 
 .code-block {

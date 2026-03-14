@@ -75,6 +75,18 @@
 
         <div class="content-grid">
             <div>
+                <h3>Sensors and Electrical Integration</h3>
+
+                <p>The circuits we used for beacon sensing and line detection were made fault-proof through the design itself. For example, adding a high-pass filter in line sensing filtered out any DC offset, like sunlight. This helped us avoid tuning the threshold values every time and saved a lot of time. In the integration, make sure that the power and ground rails are close to the battery and connect the power and ground of all devices to this rail directly. We made the mistake of creating a daisy chain of ground pins with Arduino and a stepper, leading to conductive noise. This was exactly the same issue discussed by Tom in a lecture.</p>
+
+                <p style="margin-top: 12px;">Finally, the nail in the coffin, wire management is extremely critical and will come back and hit you at the worst possible time, the competition. We did not route the wires properly or strain-relieve them. We frequently had issues with loose wires, but chose the easy path of connecting them back again. During the competition, in round 1, we had a loose connection on the motor driver, and in round 2, one of our stepper wires got disconnected. So properly zip-tieing wires and taping them to the chassis goes a long way in reliability.</p>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #333; margin: 40px 0;">
+
+        <div class="content-grid">
+            <div>
                 <h3>Final Recommendations</h3>
 
                 <h4>Weight Distribution &amp; Duty Cycle Tuning</h4>
