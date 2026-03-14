@@ -151,38 +151,42 @@
 
         <div class="strategy-transition">
             <p>However, once we tested our flywheel shooting mechanism and realized it was capable of much longer distances, we decided to pivot to only moving the robot outside of the starting box before shooting pucks into the bullseye. We modified this later to just leave the starting box and shoot from as close to the starting box as possible.</p>
+            <p style="margin-top: 16px;">Although our team consisted of four members, two members were extremely busy with other projects, so we stuck to the minimum requirements with the goal to win the competition. Thus, our final strategy was the simplest it could possibly be: move the minimum amount outside of the starting box and shoot accurately.</p>
         </div>
 
-        <div class="content-grid strategy-row">
-            <div class="strategy-box">
-                <h3>Final Product Nucleus</h3>
-                <p>
-                    1. Puck Shooting Mechanism<br>
-                    2. Reload pucks<br>
-                    3. Chassis + Wheels<br>
-                    4. Identifying bull's eye direction (from random orientation)<br>
-                    5. Movement<br>
-                    --------------------------------------------------------------<br>
-                    6. Hog line Detection<br>
-                    7. Detect Starting zone<br>
-                    8. Detecting other pucks (To avoid or displace them)
-                </p>
-            </div>
-            <div class="strategy-box">
-                <h3>Final Design Strategy</h3>
-                <p>
-                    1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
-                    2. move the robot to the center line and out of the box, then rotate to face the bullseye<br>
-                    3. shoot pucks directly into the bullseye with flywheel and stepper motor<br>
-                    4. move backwards into the starting box to reload for 5 seconds
-                </p>
-            </div>
-        </div>
-    
-        <section class="state-diagram-section">
+        <section class="prelim-section">
             <div class="bom-container">
-                <h2>State Diagrams</h2>
-                <p class="bom-subtitle">Mission-critical control logic governing autonomous operation</p>
+                <h2>Final Design</h2>
+                <p class="bom-subtitle">Final product nucleus, design strategy, and state diagrams</p>
+
+                <div class="content-grid strategy-row" style="margin-bottom: 48px;">
+                    <div class="strategy-box">
+                        <h3>Final Product Nucleus</h3>
+                        <p>
+                            1. Puck Shooting Mechanism<br>
+                            2. Reload pucks<br>
+                            3. Chassis + Wheels<br>
+                            4. Identifying bull's eye direction (from random orientation)<br>
+                            5. Movement<br>
+                            --------------------------------------------------------------<br>
+                            6. Hog line Detection<br>
+                            7. Detect Starting zone<br>
+                            8. Detecting other pucks (To avoid or displace them)
+                        </p>
+                    </div>
+                    <div class="strategy-box">
+                        <h3>Final Design Strategy</h3>
+                        <p>
+                            1. use the IR beacon to align robot by detecting a signal greater than a threshold<br>
+                            2. move the robot to the center line and out of the box, then rotate to face the bullseye<br>
+                            3. shoot pucks directly into the bullseye with flywheel and stepper motor<br>
+                            4. move backwards into the starting box to reload for 5 seconds
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="prelim-subheading" style="margin-top: 48px;">Final State Diagrams</h3>
+                <p class="bom-subtitle" style="margin-bottom: 16px;">Mission-critical control logic governing autonomous operation</p>
                 <div class="state-diagram-grid">
                     <div class="state-diagram-card">
                         <h3>Main State Diagram</h3>
@@ -199,37 +203,45 @@
         <section class="bom-section">
             <div class="bom-container">
                 <h2>BOM</h2>
-                <p class="bom-subtitle">Total Mission Expenditure: <strong>$164.94</strong></p>
-                
+                <p class="bom-subtitle">Total Mission Expenditure: <strong>$173.42</strong></p>
+
                 <div class="table-wrapper">
                     <table class="bom-table">
                         <thead>
                             <tr>
                                 <th>Item Description</th>
                                 <th>Qty</th>
+                                <th>Unit Cost</th>
                                 <th>Supplier</th>
                                 <th class="text-right">Total Cost</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Greartisan DC Motors</td><td>4</td><td>Amazon</td><td class="text-right">$65.44</td></tr>
-                            <tr><td>30W DC Motor (Flywheel)</td><td>1</td><td>Amazon</td><td class="text-right">$24.78</td></tr>
-                            <tr><td>Mecanum Wheel Set</td><td>1</td><td>Amazon</td><td class="text-right">$17.01</td></tr>
-                            <tr><td>6mm to 1/4 inch Shaft Adapter</td><td>1</td><td>Amazon</td><td class="text-right">$10.47</td></tr>
-                            <tr><td>6mm Bearings</td><td>1</td><td>Amazon</td><td class="text-right">$9.70</td></tr>
-                            <tr><td>8mm to 1/4 inch Shaft Adapter</td><td>1</td><td>Amazon</td><td class="text-right">$8.59</td></tr>
-                            <tr><td>Rubber Strip (Traction)</td><td>1</td><td>Amazon</td><td class="text-right">$7.48</td></tr>
-                            <tr><td>Shaft Couplers (SLA 3D Print)</td><td>1</td><td>AMPS</td><td class="text-right">$7.22</td></tr>
-                            <tr><td>1/4 inch D-Shaft</td><td>1</td><td>AMPS</td><td class="text-right">$2.70</td></tr>
-                            <tr><td>Jameco Stepper Motor</td><td>1</td><td>AMPS</td><td class="text-right">$2.40</td></tr>
-                            <tr><td>4.8-inch OD Green Wheel</td><td>1</td><td>210 Lab</td><td class="text-right">—</td></tr>
-                            <tr><td>Nema 17 Stepper Motor</td><td>1</td><td>210 Lab</td><td class="text-right">—</td></tr>
-                            <tr class="hardware-row"><td>Misc Hardware & Duron Sheet</td><td>—</td><td>AMPS</td><td class="text-right">$8.90</td></tr>
+                            <tr><td>Shaft Couplers SLA 3D Printing</td><td>4</td><td>$4.20</td><td>AMPS</td><td class="text-right">$16.80</td></tr>
+                            <tr><td>1/4 inch D Shaft</td><td>3</td><td>$2.70</td><td>AMPS</td><td class="text-right">$8.10</td></tr>
+                            <tr><td>1/4" Ball Bearing, 1/2" OD</td><td>6</td><td>$1.75</td><td>AMPS</td><td class="text-right">$10.50</td></tr>
+                            <tr><td>Hardware</td><td>A/R</td><td>$13.80</td><td>AMPS</td><td class="text-right">$13.80</td></tr>
+                            <tr><td>Duron, 18" × 24" × 1/8"</td><td>1</td><td>$3.00</td><td>AMPS</td><td class="text-right">$3.00</td></tr>
+                            <tr><td>Acrylic, 0.220 × 12 × 12", Clear</td><td>1</td><td>$5.40</td><td>AMPS</td><td class="text-right">$5.40</td></tr>
+                            <tr><td>Mecanum Wheel Set</td><td>4</td><td>$4.25</td><td>Amazon</td><td class="text-right">$17.01</td></tr>
+                            <tr><td>Greartisan DC Motors</td><td>4</td><td>$16.36</td><td>Amazon</td><td class="text-right">$65.44</td></tr>
+                            <tr><td>8 mm to 1/4 inch Shaft Coupler</td><td>1</td><td>$8.59</td><td>Amazon</td><td class="text-right">$8.59</td></tr>
+                            <tr><td>30W DC Motor for Flywheel</td><td>1</td><td>$24.78</td><td>Amazon</td><td class="text-right">$24.78</td></tr>
+                            <tr class="hardware-row"><td>4.8" OD Green Wheel</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>Nema 17 Stepper Motor</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>Caster Wheels 7/8"</td><td>2</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>Arduino Mega</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>Terminal Block</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>L298 Motor Driver</td><td>3</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>LM2596S Step Down Regulator</td><td>2</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>DRV8825 Stepper Driver</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>SPDT Switch</td><td>1</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
+                            <tr class="hardware-row"><td>1" Long Standoffs</td><td>21</td><td>—</td><td>210 Lab</td><td class="text-right">—</td></tr>
                         </tbody>
                         <tfoot>
                             <tr class="total-row">
-                                <td colspan="3">MISSION TOTAL</td>
-                                <td class="text-right">$164.94</td>
+                                <td colspan="4">MISSION TOTAL</td>
+                                <td class="text-right">$173.42</td>
                             </tr>
                         </tfoot>
                     </table>

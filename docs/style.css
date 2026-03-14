@@ -256,11 +256,12 @@ nav a:hover { color: #aaa; }
 
 .strategy-transition {
     max-width: 900px;
-    margin-bottom: 60px;
+    margin: 0 auto 60px;
     padding: 24px 30px;
     border: 1px solid #333;
     border-radius: 6px;
     background: rgba(255,255,255,0.02);
+    text-align: center;
 }
 .strategy-transition p {
     font-size: 16px;
@@ -765,6 +766,18 @@ footer {
     text-align: right;
     font-weight: 500;
     color: #fff;
+}
+
+/* media captions inside expandable panels */
+.media-caption {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+    padding: 8px 0 0;
+    border-top: 1px solid #222;
+    text-align: left;
 }
 
 /* mechanical constraints */

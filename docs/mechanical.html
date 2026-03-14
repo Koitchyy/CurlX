@@ -128,6 +128,7 @@
                 <p style="margin-top: 12px;">
                     We used single shear mounting on motors to stay within size constraints. We used high-grade fasteners and PLA-reinforced mounts to handle the radial loads.
                 </p>
+                <button class="read-more-btn" id="wheels-read-more" onclick="toggleWheelDetails()" style="margin-top: 16px;">Read More ↓</button>
             </div>
             <div class="img-placeholder" style="padding: 0; border: none; background: none;">
                 <model-viewer
@@ -142,20 +143,16 @@
             </div>
         </div>
 
-        <div class="read-more-row">
-            <button class="read-more-btn" id="wheels-read-more" onclick="toggleWheelDetails()">Read More ↓</button>
-        </div>
-
         <div class="expandable-panel" id="wheel-details">
             <div class="expandable-inner">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
                         <img src="./imgs/motor_test.png" alt="Testing the motors with a L298 driver" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
-                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Testing the motors with a L298 driver</p>
+                        <p class="media-caption">Testing the motors with a L298 driver</p>
                     </div>
                     <div>
                         <video src="./vids/init_wheels_test.MOV" controls style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;"></video>
-                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">The robot moves!</p>
+                        <p class="media-caption">The robot moves!</p>
                     </div>
                 </div>
             </div>
@@ -170,6 +167,7 @@
                 <p style="margin-top: 12px;">
                     To achieve an 8-foot range, we implemented a software-based "boost" phase. Immediately after a puck is detected leaving the chamber, the motor is pulsed to 100% duty cycle to rapidly recover the RPM lost to kinetic energy transfer before the next puck is pushed through.
                 </p>
+                <button class="read-more-btn" id="shooter-read-more" onclick="toggleShooterDetails()" style="margin-top: 16px;">Read More ↓</button>
             </div>
             <div class="img-placeholder" style="padding: 0; border: none; background: none;">
                 <model-viewer
@@ -182,10 +180,6 @@
                     style="width: 100%; height: 100%; min-height: 300px; background: transparent;"
                 ></model-viewer>
             </div>
-        </div>
-
-        <div class="read-more-row">
-            <button class="read-more-btn" id="shooter-read-more" onclick="toggleShooterDetails()">Read More ↓</button>
         </div>
 
         <div class="expandable-panel" id="shooter-details">
@@ -236,11 +230,11 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <div>
                         <video src="./imgs/init_shoot_test.mov" controls style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;"></video>
-                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Test footage</p>
+                        <p class="media-caption">testing rotation of initial puck shooting mechanism. at first the motor spins at a baseline speed but then speeds up for the burst when it's actually launching the puck</p>
                     </div>
                     <div>
                         <img src="./imgs/init_shoot_top.png" alt="Initial shooting mechanism top view" style="width: 100%; border: 1px solid #333; border-radius: 4px; display: block;">
-                        <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 0; text-align: right;">Top view</p>
+                        <p class="media-caption">Top view</p>
                     </div>
                 </div>
 
