@@ -123,7 +123,7 @@ void MecanumWheels::CCW(int in1, int in2) {
                     <p class="section-intro" style="margin-bottom: 0;">The beacon sensing system is the robot's long-range guidance, utilizing an analog signal processing chain to identify the 909 Hz infrared towers. The code executes a 360° chassis rotation while continuously sampling the <code>beaconPin</code> (A0) to detect a specific voltage displacement from a 2.5V reference center. By calculating the <code>maxDisplacement</code> within a set <code>sampleWindow</code>, the logic filters for the peak signal intensity. Once the displacement exceeds the <code>thresholdAmplitude</code> (calibrated at 1.9V), the <code>isThresholdExceeded</code> flag triggers an immediate <code>robot.stop()</code> command. This process ensures the robot precisely aligns its firing axis with the center of the arena's IR beacon before beginning its shooting sequence.</p>
                     <div class="sw-code-col">
                         <div class="sw-snippet-wrap">
-                            <div class="sw-snippet-header">BeaconSensor.cpp</div>
+                            <div class="sw-snippet-header">BeaconSensor.ino</div>
 <pre class="sw-snippet">int raw = analogRead(sensorPin);
 float voltage = (raw * 5.0) / 1023.0;
 
@@ -152,7 +152,7 @@ facingNearBeacon = isNearBeacon;</pre>
                     <p class="section-intro" style="margin-bottom: 0;">The line sensing system provides short-range positioning by detecting the black hog lines on the arena floor through frequency-modulated reflectance. In <code>setup()</code>, the <code>tone()</code> function watermarks the emitted IR light at 1250 Hz, which is then captured by a phototransistor on an interrupt-enabled pin (18). The <code>attachInterrupt()</code> function triggers the <code>countPulse()</code> ISR on every falling edge, allowing the software to measure the density of reflected light within a 20ms <code>sampleWindow</code>. The <code>isLineDetected()</code> function monitors the <code>savedCount</code>; when the robot passes over black tape, the IR absorption causes the pulse count to drop below a calibrated threshold (e.g., 50), signaling the robot to transition from shifting sideways into its shooting state.</p>
                     <div class="sw-code-col">
                         <div class="sw-snippet-wrap">
-                            <div class="sw-snippet-header">LineFollow.cpp</div>
+                            <div class="sw-snippet-header">LineFollowBasic.ino</div>
 <pre class="sw-snippet">DriveState determineState(bool lead, bool left, bool right) {
   if ( lead && !left && !right) return FORWARD;
   if ( lead &&  left && !right) return SLIGHT_LEFT;
@@ -184,7 +184,7 @@ void countRight() { pulseRight++; }</pre>
                     <p class="section-intro" style="margin-bottom: 0;">The logic for the puck loader utilizes a non-blocking state machine to synchronize the stepper motor with the robot's shooting sequence. Instead of using blocking loops that would freeze the robot's sensors, the system employs a <code>request90DegreeTurn()</code> trigger. When the main mission code reaches the SHOOT state, it sets a target step count (calculated at 800 steps for a 90° indexing turn using 1/16 microstepping). The <code>runStepperNonBlocking()</code> function then pulses the <code>stepPin</code> only when the required interval has elapsed, allowing the Arduino to simultaneously manage flywheel RPM and IR beacon tracking. This ensures the revolving magazine door loads one puck into the firing chamber without interrupting the robot's other tasks, i.e. monitoring the IR beacon.</p>
                     <div class="sw-code-col">
                         <div class="sw-snippet-wrap">
-                            <div class="sw-snippet-header">Stepper.cpp</div>
+                            <div class="sw-snippet-header">Stepper.ino</div>
 <pre class="sw-snippet">// 90° = 50 full steps × 16 microsteps = 800 pulses
 const int stepsPer90 = 50 * 16;
 
