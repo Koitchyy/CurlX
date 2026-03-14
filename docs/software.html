@@ -69,6 +69,8 @@
                 <div class="sw-content-row">
                     <p class="section-intro" style="margin-bottom: 0;">The drivetrain software manages 4 motors × 3 pins = 12 I/O pins on the Arduino Mega which handles digital direction logic (CW/CCW) and PWM speed control. We manipulate these in order to move the robot forward, backward, or sideways.</p>
                     <div class="sw-code-col">
+                        <div class="sw-snippet-wrap">
+                            <div class="sw-snippet-header">MecanumWheels.cpp</div>
 <pre class="sw-snippet">void MecanumWheels::forward()    {  CW(_fl); CCW(_fr); CCW(_bl);  CW(_br); }
 void MecanumWheels::backward()   { CCW(_fl);  CW(_fr);  CW(_bl); CCW(_br); }
 void MecanumWheels::shiftRight() {  CW(_fl);  CW(_fr);  CW(_bl);  CW(_br); }
@@ -82,6 +84,7 @@ void MecanumWheels::CW(int in1, int in2) {
 void MecanumWheels::CCW(int in1, int in2) {
   digitalWrite(in1, HIGH); digitalWrite(in2, LOW);
 }</pre>
+                        </div>
                         <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/MecanumWheels" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                             View Code
@@ -117,6 +120,8 @@ void MecanumWheels::CCW(int in1, int in2) {
                 <div class="sw-content-row">
                     <p class="section-intro" style="margin-bottom: 0;">The beacon sensing system is the robot's long-range guidance, utilizing an analog signal processing chain to identify the 909 Hz infrared towers. The code executes a 360° chassis rotation while continuously sampling the <code>beaconPin</code> (A0) to detect a specific voltage displacement from a 2.5V reference center. By calculating the <code>maxDisplacement</code> within a set <code>sampleWindow</code>, the logic filters for the peak signal intensity. Once the displacement exceeds the <code>thresholdAmplitude</code> (calibrated at 1.9V), the <code>isThresholdExceeded</code> flag triggers an immediate <code>robot.stop()</code> command. This process ensures the robot precisely aligns its firing axis with the center of the arena's IR beacon before beginning its shooting sequence.</p>
                     <div class="sw-code-col">
+                        <div class="sw-snippet-wrap">
+                            <div class="sw-snippet-header">BeaconSensor.cpp</div>
 <pre class="sw-snippet">int raw = analogRead(sensorPin);
 float voltage = (raw * 5.0) / 1023.0;
 
@@ -128,6 +133,7 @@ bool isNearBeacon = (voltage >= NEAR_MIN_V &&
 
 facingFarBeacon  = isFarBeacon && !isNearBeacon;
 facingNearBeacon = isNearBeacon;</pre>
+                        </div>
                         <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/BeaconSensor" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                             View Code
@@ -143,6 +149,8 @@ facingNearBeacon = isNearBeacon;</pre>
                 <div class="sw-content-row">
                     <p class="section-intro" style="margin-bottom: 0;">The line sensing system provides short-range positioning by detecting the black hog lines on the arena floor through frequency-modulated reflectance. In <code>setup()</code>, the <code>tone()</code> function watermarks the emitted IR light at 1250 Hz, which is then captured by a phototransistor on an interrupt-enabled pin (18). The <code>attachInterrupt()</code> function triggers the <code>countPulse()</code> ISR on every falling edge, allowing the software to measure the density of reflected light within a 20ms <code>sampleWindow</code>. The <code>isLineDetected()</code> function monitors the <code>savedCount</code>; when the robot passes over black tape, the IR absorption causes the pulse count to drop below a calibrated threshold (e.g., 50), signaling the robot to transition from shifting sideways into its shooting state.</p>
                     <div class="sw-code-col">
+                        <div class="sw-snippet-wrap">
+                            <div class="sw-snippet-header">LineFollow.cpp</div>
 <pre class="sw-snippet">DriveState determineState(bool lead, bool left, bool right) {
   if ( lead && !left && !right) return FORWARD;
   if ( lead &&  left && !right) return SLIGHT_LEFT;
@@ -157,6 +165,7 @@ facingNearBeacon = isNearBeacon;</pre>
 void countLead() { pulseLead++; }
 void countLeft() { pulseLeft++; }
 void countRight() { pulseRight++; }</pre>
+                        </div>
                         <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/LineFollow" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                             View Code
@@ -172,6 +181,8 @@ void countRight() { pulseRight++; }</pre>
                 <div class="sw-content-row">
                     <p class="section-intro" style="margin-bottom: 0;">The logic for the puck loader utilizes a non-blocking state machine to synchronize the stepper motor with the robot's shooting sequence. Instead of using blocking loops that would freeze the robot's sensors, the system employs a <code>request90DegreeTurn()</code> trigger. When the main mission code reaches the SHOOT state, it sets a target step count (calculated at 800 steps for a 90° indexing turn using 1/16 microstepping). The <code>runStepperNonBlocking()</code> function then pulses the <code>stepPin</code> only when the required interval has elapsed, allowing the Arduino to simultaneously manage flywheel RPM and IR beacon tracking. This ensures the revolving magazine door loads one puck into the firing chamber without interrupting the robot's other tasks, i.e. monitoring the IR beacon.</p>
                     <div class="sw-code-col">
+                        <div class="sw-snippet-wrap">
+                            <div class="sw-snippet-header">Stepper.cpp</div>
 <pre class="sw-snippet">// 90° = 50 full steps × 16 microsteps = 800 pulses
 const int stepsPer90 = 50 * 16;
 
@@ -183,6 +194,7 @@ void move90Degrees() {
     delayMicroseconds(625);
   }
 }</pre>
+                        </div>
                         <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/Stepper" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                             View Code
@@ -210,30 +222,9 @@ void move90Degrees() {
                 <div class="sw-content-row">
                     <p class="section-intro" style="margin-bottom: 0;">Mission-critical control logic governing autonomous operation. The main loop samples the IR beacon, drives the mecanum chassis through timed states, and fires the flywheel in a non-blocking shooting sequence — all within a hard 2-minute kill timer.</p>
                     <div class="sw-code-col">
-<pre class="sw-snippet">float getMaxDisplacement() {
-  float maxDisp = 0.0;
-  unsigned long t = millis();
-  while (millis() - t &lt; 50) {
-    float v = (analogRead(beaconPin) * 5.0) / 1023.0;
-    float d = abs(v - 2.5);
-    if (d > maxDisp) maxDisp = d;
-  }
-  return maxDisp;
-}
-
-void runStepperNonBlocking() {
-  if (!stepperActive) return;
-  if (micros() - lastStepMicros >= stepDelayMicros) {
-    lastStepMicros = micros();
-    stepPinState = !stepPinState;
-    digitalWrite(stepPin, stepPinState);
-    if (stepPinState == LOW && ++currentStepCount >= stepsTo90)
-      stepperActive = false;
-  }
-}</pre>
                         <a class="sw-github-btn" href="https://github.com/Koitchyy/CurlX/tree/main/Fast_Competition_Code" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23A11.51 11.51 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            Final Competition Code
+                            View Code
                         </a>
                     </div>
                 </div>

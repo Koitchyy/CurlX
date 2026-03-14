@@ -104,10 +104,15 @@
                 <img src="./imgs/line_sense_sch.png" alt="IR line sensing schematic">
             </div>
             <div style="text-align: center; margin-top: 16px;">
-                <video width="400" controls>
-                    <source src="./vids/line_sensor_test.mov" type="video/mp4">
-                </video>
-                <p style="margin-top: 8px; font-style: italic;">line detection works!</p>
+                <button class="read-more-btn" id="ir-line-tests-btn" onclick="toggleIRLineTests()" style="margin-top: 0;">Tests ↓</button>
+            </div>
+            <div class="expandable-panel" id="ir-line-tests-panel">
+                <div style="text-align: center; margin-top: 16px;">
+                    <video width="400" controls>
+                        <source src="./vids/line_sensor_test.mov" type="video/mp4">
+                    </video>
+                    <p style="margin-top: 8px; font-style: italic;">line detection works!</p>
+                </div>
             </div>
         </div>
 
@@ -193,6 +198,18 @@
             updateCountdown();
             setInterval(updateCountdown, 1000);
         })();
+
+        function toggleIRLineTests() {
+            var panel = document.getElementById('ir-line-tests-panel');
+            var btn = document.getElementById('ir-line-tests-btn');
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                btn.textContent = 'Tests ↓';
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                btn.textContent = 'Tests ↑';
+            }
+        }
     </script>
 </body>
 </html>

@@ -929,26 +929,28 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 5px 13px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.04);
-    color: #aaa;
+    padding: 7px 16px;
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    background: #0d0d0d;
+    color: #888;
     font-family: 'Barlow', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     text-decoration: none;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
     white-space: nowrap;
+    align-self: flex-start;
 }
 .sw-github-btn:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: #777;
-    color: #fff;
+    background: #181818;
+    border-color: #666;
+    color: #ccc;
 }
 .sw-github-btn svg {
     flex-shrink: 0;
+    fill: currentColor;
 }
 
 .code-block {
@@ -1076,19 +1078,50 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: flex-start;
 }
 .sw-snippet {
-    background: #080808;
-    border: 1px solid #2a2a2a;
-    border-radius: 4px;
+    background: #050505;
+    border: 1px solid #333;
+    border-top: 2px solid #555;
+    border-radius: 0 0 4px 4px;
     padding: 18px 20px;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
     font-size: 12px;
-    line-height: 1.65;
-    color: #999;
+    line-height: 1.75;
+    color: #c8c8c8;
     white-space: pre;
     margin: 0;
+    flex: 1;
+}
+.sw-snippet-wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.sw-snippet-header {
+    background: #111;
+    border: 1px solid #333;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    padding: 6px 14px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sw-snippet-header::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #444;
 }
 
 .bom-subtitle {
